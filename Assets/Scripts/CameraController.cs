@@ -1,35 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
-public class CameraController : MonoBehaviour
+using DG.Tweening;
+public class cameraController : MonoBehaviour
 {
-    public Transform playerTransform;
-    private Vector3 offset;
-    public float cameraSpeed;
-
+    public Vector3 camTargetPos,camTargetRot;
+    public float time;
     void Start()
     {
-        offset = transform.position - playerTransform.position;
+        time = 1.2f;
+        camTargetPos=new Vector3(0,1,-10);
+        camTargetRot=new Vector3(0,0,-0);
     }
 
-    void Update()
+    public void startLevelBtn() 
     {
-        int hatCount = FindAnyObjectByType<GameManager>().childCount;
+        cameraMove(camTargetPos,camTargetRot);
     }
 
-    void LateUpdate()
+    private void cameraMove(Vector3 targetPos, Vector3 targetRot)
     {
-        int hatCount = FindObjectOfType<GameManager>().childCount;
-
-        Vector3 targetPosition = offset + playerTransform.position;
-        Vector3 newPosition = Vector3.Lerp(transform.position, targetPosition, cameraSpeed);
-
-        float zAdjustment = Mathf.Floor(hatCount / 3f);
-        float yAdjustment = Mathf.Floor(hatCount / 6f);
-
-        Vector3 adjustmentVector = new Vector3(0f, yAdjustment, -zAdjustment);
-        newPosition = Vector3.Lerp(newPosition, newPosition + adjustmentVector, cameraSpeed);
-
-        transform.position = newPosition;
+        this.gameObject.transform.DOMove(targetPos,time);
+        this.gameObject.transform.DORotate(targetRot,time);
     }
-
 }
