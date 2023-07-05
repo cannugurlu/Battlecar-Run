@@ -5,7 +5,9 @@ using UnityEngine;
 public class playersScript : MonoBehaviour
 {
     Rigidbody rb;
+    public Vector3 fingerDownPos,fingerUpPos;
     public float velocity;
+    private bool detectSwipe = false;
 
     private void Awake()
     {
@@ -17,6 +19,23 @@ public class playersScript : MonoBehaviour
     }
     void Update()
     {
-        
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            fingerDownPos = Input.GetTouch(0).position;
+        }
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            fingerUpPos = Input.GetTouch(0).position;
+        }
+
+        if (fingerDownPos.x < fingerUpPos.x)
+        {
+            print("saða");
+        }
+        else if (fingerDownPos.x > fingerUpPos.x)
+        {
+            print("sola");
+        }
+        else return;
     }
 }
