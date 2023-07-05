@@ -16,6 +16,7 @@ public class cameraController : MonoBehaviour
     public void startLevelBtn() 
     {
         cameraMove(camTargetPos,camTargetRot);
+        Time.timeScale = 1.0f;
     }
 
     private void cameraMove(Vector3 targetPos, Vector3 targetRot)
