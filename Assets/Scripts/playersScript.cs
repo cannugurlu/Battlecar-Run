@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playersScript : MonoBehaviour
@@ -31,11 +32,14 @@ public class playersScript : MonoBehaviour
         if (fingerDownPos.x < fingerUpPos.x)
         {
             print("saga");
+            transform.Translate(transform.right * velocity * Time.deltaTime);
         }
         else if (fingerDownPos.x > fingerUpPos.x)
         {
             print("sola");
+            
         }
         else return;
+
     }
 }

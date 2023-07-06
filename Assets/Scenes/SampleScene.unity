@@ -848,6 +848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbd14a09fa135843ade0465b057458d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButton: {fileID: 1711951466}
   camTargetPos: {x: 0, y: 0, z: 0}
   camTargetRot: {x: 0, y: 0, z: 0}
   time: 0
@@ -1382,6 +1383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1460219337}
   - component: {fileID: 1460219336}
+  - component: {fileID: 1460219338}
   m_Layer: 0
   m_Name: gameManager
   m_TagString: Untagged
@@ -1416,6 +1418,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1460219338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460219335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bcbd7891222bba419f5a820dcb7c8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1481182176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,7 +1762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fingerDownPos: {x: 0, y: 0, z: 0}
   fingerUpPos: {x: 0, y: 0, z: 0}
-  velocity: 100
+  velocity: 150
 --- !u!54 &1657966757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1862,7 +1876,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 963194229}
         m_TargetAssemblyTypeName: cameraController, Assembly-CSharp
-        m_MethodName: startLevelBtn
+        m_MethodName: startLevelButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
