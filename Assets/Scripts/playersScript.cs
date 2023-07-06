@@ -30,7 +30,7 @@ public class playersScript : MonoBehaviour
 
         if (fingerDownPos.x < fingerUpPos.x)
         {
-            print("saða");
+            print("saga");
         }
         else if (fingerDownPos.x > fingerUpPos.x)
         {
