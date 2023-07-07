@@ -7,6 +7,8 @@ using System.Runtime.Serialization;
 public class cameraController : MonoBehaviour
 {
     public GameObject startButton;
+    public GameObject buyButton;
+    public GameObject moneyButton;
     public Vector3 camTargetPos,camTargetRot;
     public float time;
     void Start()
@@ -20,6 +22,8 @@ public class cameraController : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         startButton.SetActive(false);
+        buyButton.SetActive(false);
+        moneyButton.SetActive(false);
         cameraMove(camTargetPos, camTargetRot);
         Invoke(nameof(makeChild), time);
     }

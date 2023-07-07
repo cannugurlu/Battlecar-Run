@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3662423778282059023}
   - component: {fileID: 1439284552405567699}
   - component: {fileID: 1959261607224952030}
-  - component: {fileID: 8261955301273972601}
   m_Layer: 0
   m_Name: silah
   m_TagString: Silah
@@ -106,15 +105,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8261955301273972601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7369368956812039790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4923d06e5f4263c41a50a108499c54d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

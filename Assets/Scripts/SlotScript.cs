@@ -11,8 +11,15 @@ public class SlotScript : MonoBehaviour
         return is_filled;
     }
 
-    public void SetFilled(bool param)
+    private void Update() 
     {
-        is_filled = param;
+        if (transform.childCount > 0 )
+        {
+            is_filled = true;
+        }
+        else
+        {
+            is_filled = false;
+        }
     }
 }
