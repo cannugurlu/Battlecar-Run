@@ -482,50 +482,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!1 &189666317
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 189666319}
-  - component: {fileID: 189666318}
-  m_Layer: 0
-  m_Name: DragController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &189666318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189666317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed5d3c383b7f8134c86c289236326bca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &189666319
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189666317}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3273468, y: 2.6242075, z: -2.960404}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &259337390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,6 +1293,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 1711951466}
+  buyButton: {fileID: 798680990}
+  moneyButton: {fileID: 337340022}
   camTargetPos: {x: 0, y: 0, z: 0}
   camTargetRot: {x: 0, y: 0, z: 0}
   time: 0
@@ -2669,6 +2627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2617024906263305905}
   - component: {fileID: 2617024906263305904}
+  - component: {fileID: 2617024906263305908}
   m_Layer: 0
   m_Name: StartSlots
   m_TagString: Untagged
@@ -2676,3 +2635,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2617024906263305908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2617024906263305907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30acfbcd55a07f94e8a1a39006ba82c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level2GunPrefab: {fileID: 727345700839110801, guid: 10327ad405801ee489daf231e51b548f, type: 3}
