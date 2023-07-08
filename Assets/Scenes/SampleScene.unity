@@ -960,9 +960,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletobject: {fileID: 7271900365780066346, guid: d32aa393ba69b2a44a7554f397165dab, type: 3}
-  bulletSpeed: 1
-  bulletLifeTime: 10
-  fireSpeed: 0.5
+  bulletSpeed: 20
+  bulletLifeTime: 2
+  fireRate: 1
   power: 0
   minFireSpeed: 0
   minBulletLifeTime: 0
@@ -1906,7 +1906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3529451355110575397, guid: e25e1b076a88496428d84f27deb11d5d, type: 3}
       propertyPath: m_TagString
-      value: Gate
+      value: GateGood
       objectReference: {fileID: 0}
     - target: {fileID: 4301203598644303775, guid: e25e1b076a88496428d84f27deb11d5d, type: 3}
       propertyPath: m_RootOrder
@@ -1956,9 +1956,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3529451355110575397, guid: e25e1b076a88496428d84f27deb11d5d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1540669562}
     - targetCorrespondingSourceObject: {fileID: 4255068342001442789, guid: e25e1b076a88496428d84f27deb11d5d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -2260,23 +2257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229e6ce3ab3208f48a8b71c581fc3232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1540669560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3529451355110575397, guid: e25e1b076a88496428d84f27deb11d5d, type: 3}
-  m_PrefabInstance: {fileID: 1151690625}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1540669562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540669560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7be259e4450474bb6a493c4f53d6fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1606428156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,7 +2514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fingerDownPos: {x: 0, y: 0, z: 0}
   fingerUpPos: {x: 0, y: 0, z: 0}
-  velocity: 150
+  velocity: 200
 --- !u!54 &1657966757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2576,7 +2556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5078089122373930096, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
       propertyPath: m_TagString
-      value: Gate
+      value: GateBad
       objectReference: {fileID: 0}
     - target: {fileID: 5562842236605945546, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
       propertyPath: m_RootOrder
