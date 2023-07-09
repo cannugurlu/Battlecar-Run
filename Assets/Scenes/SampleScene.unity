@@ -1952,6 +1952,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6713330571759079191, guid: e25e1b076a88496428d84f27deb11d5d, type: 3}
+      propertyPath: m_fontSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713330571759079191, guid: e25e1b076a88496428d84f27deb11d5d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2601,6 +2609,38 @@ PrefabInstance:
     - target: {fileID: 5562842236605945546, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395897981624011833, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
+      propertyPath: hedefRenk.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395897981624011833, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
+      propertyPath: hedefRenk.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395897981624011833, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
+      propertyPath: hedefRenk.g
+      value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395897981624011833, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
+      propertyPath: hedefRenk.r
+      value: 0.39215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395897981624011833, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
+      propertyPath: baslangicRenk.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395897981624011833, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
+      propertyPath: baslangicRenk.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395897981624011833, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
+      propertyPath: baslangicRenk.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395897981624011833, guid: 79c84cf9a5cd7db4dbb9f6a487f5e996, type: 3}
+      propertyPath: baslangicRenk.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Drawing;
+using DG.Tweening;
+
 
 public class newGateController : MonoBehaviour
 {
@@ -41,18 +43,22 @@ public class newGateController : MonoBehaviour
                 }
                 else if (effectiveNumber == 0)
                 {
-                    if (!renkDegisti)
-                    {
-                        gecenSure += Time.deltaTime;
-                        float yuzdeTamamlandi = gecenSure / sure;
-                        GetComponentInChildren<Renderer>().material.color = UnityEngine.Color.Lerp(baslangicRenk, hedefRenk, sure);
-                        GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n+" + effectiveNumber.ToString();
 
-                        if (gecenSure >= sure)
-                        {
-                            renkDegisti = true;
-                        }
-                    }
+                    //renk kýrmýzýdan maviye dönecek
+                    //if (!renkDegisti)
+                    //{
+                    //    gecenSure += Time.deltaTime;
+                    //    float yuzdeTamamlandi = gecenSure / sure;
+                    //    GetComponentInChildren<Renderer>().material.color = UnityEngine.Color.Lerp(baslangicRenk, hedefRenk, sure);
+                    //    GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n+" + effectiveNumber.ToString();
+
+                    //    if (gecenSure >= sure)
+                    //    {
+                    //        renkDegisti = true;
+                    //    }
+                    //}
+                    //redtoblue(gameObject);
+                    StartCoroutine(redtogreen(gameObject, 1.0f));
                 }
                 else
                 {
@@ -67,18 +73,21 @@ public class newGateController : MonoBehaviour
                 }
                 else if (effectiveNumber == 0)
                 {
-                    if (!renkDegisti)
-                    {
-                        gecenSure += Time.deltaTime;
-                        float yuzdeTamamlandi = gecenSure / sure;
-                        GetComponentInChildren<Renderer>().material.color = UnityEngine.Color.Lerp(baslangicRenk, hedefRenk, yuzdeTamamlandi);
-                        GetComponentInChildren<TextMeshPro>().text = "Menzil\n+" + effectiveNumber.ToString();
+                    //renk kýrmýzýdan maviye dönecek
+                    //if (!renkDegisti)
+                    //{
+                    //    gecenSure += Time.deltaTime;
+                    //    float yuzdeTamamlandi = gecenSure / sure;
+                    //    GetComponentInChildren<Renderer>().material.color = UnityEngine.Color.Lerp(baslangicRenk, hedefRenk, yuzdeTamamlandi);
+                    //    GetComponentInChildren<TextMeshPro>().text = "Menzil\n+" + effectiveNumber.ToString();
 
-                        if (gecenSure >= sure)
-                        {
-                            renkDegisti = true;
-                        }
-                    }
+                    //    if (gecenSure >= sure)
+                    //    {
+                    //        renkDegisti = true;
+                    //    }
+                    //}
+                    //redtoblue(gameObject);
+                    StartCoroutine(redtogreen(gameObject, 1.0f));
                 }
                 else
                 {
@@ -96,7 +105,7 @@ public class newGateController : MonoBehaviour
 
     void gateCustomizer()
     {
-        effectiveNumber=Random.Range(1, 5)*100;
+        effectiveNumber=Random.Range(1, 3)*100;
         randomVariable = Random.Range(0, 2);
         if (randomVariable == 0) // atýþ hýzý
         {
@@ -124,9 +133,25 @@ public class newGateController : MonoBehaviour
         }
     }
 
+
+
+
+
+
+
     IEnumerator FadeOut(GameObject parentObject, float transparency, float duration)
     {
         Renderer[] childRenderers = parentObject.GetComponentsInChildren<Renderer>();
+        List<Renderer> renderers = new List<Renderer>(childRenderers);
+        string textsname = "GateNumber";
+        for (int i = renderers.Count - 1; i >= 0; i--)
+        {
+            if (renderers[i].name == textsname)
+            {
+                renderers.RemoveAt(i);
+                break; // Ýlk bulunan öðeyi çýkardýktan sonra döngüden çýk
+            }
+        }
 
         foreach (Renderer renderer in childRenderers)
         {
@@ -149,6 +174,31 @@ public class newGateController : MonoBehaviour
             // Nesneyi tamamen görünmez hale getir
             color.a = 0f;
             material.color = color;
+        }
+    }
+
+    IEnumerator redtogreen(GameObject self, float duration)
+    {
+        Renderer[] childRenderers = self.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer renderer in childRenderers)
+        {
+            Material material = renderer.material;
+            UnityEngine.Color color = material.color;
+
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+
+                color.r = Mathf.Lerp(color.r, 100, elapsedTime / duration);
+                color.g = Mathf.Lerp(color.g, 214, elapsedTime / duration);
+                color.b = Mathf.Lerp(color.b, 255, elapsedTime / duration);
+                material.color = color;
+
+                yield return null;
+            }
         }
     }
 }
