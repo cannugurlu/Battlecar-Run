@@ -17,6 +17,8 @@ public class newGateController : MonoBehaviour
     float transparency = 1f; 
     float duration = 0.5f;
     int randomVariable;
+    bool isCoroutineRunning = false;
+    bool isCoroutineDone = false;
 
     private void Awake()
     {
@@ -43,22 +45,10 @@ public class newGateController : MonoBehaviour
                 }
                 else if (effectiveNumber == 0)
                 {
-
-                    //renk kýrmýzýdan maviye dönecek
-                    //if (!renkDegisti)
-                    //{
-                    //    gecenSure += Time.deltaTime;
-                    //    float yuzdeTamamlandi = gecenSure / sure;
-                    //    GetComponentInChildren<Renderer>().material.color = UnityEngine.Color.Lerp(baslangicRenk, hedefRenk, sure);
-                    //    GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n+" + effectiveNumber.ToString();
-
-                    //    if (gecenSure >= sure)
-                    //    {
-                    //        renkDegisti = true;
-                    //    }
-                    //}
-                    //redtoblue(gameObject);
-                    StartCoroutine(redtogreen(gameObject, 1.0f));
+                    if(!isCoroutineRunning && !isCoroutineDone)
+                    {
+                        StartCoroutine(redtogreen(gameObject, duration));
+                    }
                 }
                 else
                 {
@@ -73,21 +63,10 @@ public class newGateController : MonoBehaviour
                 }
                 else if (effectiveNumber == 0)
                 {
-                    //renk kýrmýzýdan maviye dönecek
-                    //if (!renkDegisti)
-                    //{
-                    //    gecenSure += Time.deltaTime;
-                    //    float yuzdeTamamlandi = gecenSure / sure;
-                    //    GetComponentInChildren<Renderer>().material.color = UnityEngine.Color.Lerp(baslangicRenk, hedefRenk, yuzdeTamamlandi);
-                    //    GetComponentInChildren<TextMeshPro>().text = "Menzil\n+" + effectiveNumber.ToString();
-
-                    //    if (gecenSure >= sure)
-                    //    {
-                    //        renkDegisti = true;
-                    //    }
-                    //}
-                    //redtoblue(gameObject);
-                    StartCoroutine(redtogreen(gameObject, 1.0f));
+                    if (!isCoroutineRunning && !isCoroutineDone)
+                    {
+                        StartCoroutine(redtogreen(gameObject, duration));
+                    }
                 }
                 else
                 {
@@ -141,19 +120,16 @@ public class newGateController : MonoBehaviour
 
     IEnumerator FadeOut(GameObject parentObject, float transparency, float duration)
     {
-        Renderer[] childRenderers = parentObject.GetComponentsInChildren<Renderer>();
-        List<Renderer> renderers = new List<Renderer>(childRenderers);
-        string textsname = "GateNumber";
-        for (int i = renderers.Count - 1; i >= 0; i--)
+        List<Renderer> objects=new List<Renderer>();
+        foreach(Transform child in parentObject.transform)
         {
-            if (renderers[i].name == textsname)
+            if (child.name != "GateNumber")
             {
-                renderers.RemoveAt(i);
-                break; // Ýlk bulunan öðeyi çýkardýktan sonra döngüden çýk
+                objects.Add(child.gameObject.GetComponent<Renderer>());
             }
         }
 
-        foreach (Renderer renderer in childRenderers)
+        foreach (Renderer renderer in objects)
         {
             Material material = renderer.material;
             UnityEngine.Color color = material.color;
@@ -164,24 +140,33 @@ public class newGateController : MonoBehaviour
             {
                 elapsedTime += Time.deltaTime;
 
-                // Saydamlýðý azaltarak rengi güncelle
+                // Saydaml??? azaltarak rengi g?ncelle
                 color.a = Mathf.Lerp(transparency, 0f, elapsedTime / duration);
                 material.color = color;
 
                 yield return null;
             }
 
-            // Nesneyi tamamen görünmez hale getir
+            // Nesneyi tamamen g?r?nmez hale getir
             color.a = 0f;
             material.color = color;
         }
     }
 
-    IEnumerator redtogreen(GameObject self, float duration)
-    {
-        Renderer[] childRenderers = self.GetComponentsInChildren<Renderer>();
 
-        foreach (Renderer renderer in childRenderers)
+    IEnumerator redtogreen(GameObject parentObject, float duration)
+    {
+        isCoroutineRunning = true;
+        List<Renderer> objects = new List<Renderer>();
+        foreach (Transform child in parentObject.transform)
+        {
+            if (child.name != "GateNumber")
+            {
+                objects.Add(child.gameObject.GetComponent<Renderer>());
+            }
+        }
+
+        foreach (Renderer renderer in objects)
         {
             Material material = renderer.material;
             UnityEngine.Color color = material.color;
@@ -192,13 +177,15 @@ public class newGateController : MonoBehaviour
             {
                 elapsedTime += Time.deltaTime;
 
-                color.r = Mathf.Lerp(color.r, 100, elapsedTime / duration);
-                color.g = Mathf.Lerp(color.g, 214, elapsedTime / duration);
-                color.b = Mathf.Lerp(color.b, 255, elapsedTime / duration);
+                color.r = Mathf.Lerp(100, 0f, elapsedTime / duration);
+                color.g = Mathf.Lerp(214, 0f, elapsedTime / duration);
+                color.b = Mathf.Lerp(255, 0f, elapsedTime / duration);
                 material.color = color;
 
                 yield return null;
             }
         }
+        isCoroutineRunning = false;
+        isCoroutineDone = true;
     }
 }
