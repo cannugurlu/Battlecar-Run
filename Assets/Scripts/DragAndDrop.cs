@@ -7,6 +7,7 @@ public class DragAndDrop : MonoBehaviour
     private GameObject selectedObject;
     private Vector3 initialPosition;
     public GameObject level2GunPrefab;
+    private float yOffset = 1.01f;
 
     private void Update()
     {
@@ -63,7 +64,26 @@ public class DragAndDrop : MonoBehaviour
         {
             Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(selectedObject.transform.position).z);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-            selectedObject.transform.position = new Vector3(worldPosition.x, 1.01f, worldPosition.z);
+
+            Collider[] colliders = Physics.OverlapSphere(selectedObject.transform.position, 0.1f);
+
+            if (colliders.Length == 0)
+            {
+                yOffset = 1.01f;
+            }
+            else
+            {
+                foreach (Collider collider in colliders)
+                {
+                    if (collider.CompareTag("car") && collider.gameObject != selectedObject)
+                    {
+                        yOffset += 1f;
+                        break;
+                    }
+                }
+            }
+
+            selectedObject.transform.position = new Vector3(worldPosition.x, yOffset, worldPosition.z);
         }
     }
 
