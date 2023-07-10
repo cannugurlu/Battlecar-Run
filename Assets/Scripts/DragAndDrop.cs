@@ -48,6 +48,10 @@ public class DragAndDrop : MonoBehaviour
                         droppedOnSilah = true;
                         break;
                     }
+                    if (collider.CompareTag("car") && collider.gameObject != selectedObject)
+                    {
+                        // buraya silah yerleştirme kodları yazılacak arabanin ilgili slotlarına götürücek silahları otomatk olarak
+                    }
                 }
 
                 if (!droppedOnSilah)
