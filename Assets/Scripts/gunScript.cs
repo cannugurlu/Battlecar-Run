@@ -6,18 +6,26 @@ public class GunScript : MonoBehaviour
 {
     [SerializeField] GameObject bulletobject;
     [SerializeField] float bulletSpeed;
-    public float bulletLifeTime;
-    public float fireRate;
+    public float bulletLifeTime=1; // menzil
+    public float fireRate=1; // atýþ sýklýðý
     public float power;
-    public float minFireSpeed;
+    public float minFireRate;
     public float minBulletLifeTime;
+    //public static GunScript instance;
 
     private void Awake()
     {
+        //instance = this;
     }
     private void Start()
     {
         StartAtesEt();
+    }
+
+    private void Update()
+    {
+        //print("fireRate " + fireRate);
+        //print("mermi lifetime " + bulletLifeTime);
     }
 
     public void StartAtesEt()

@@ -11,6 +11,10 @@ TagManager:
   - GateGood
   - GateBad
   - bullet
+  - car
+  - FinishLine
+  - Obstacle
+  - bant
   layers:
   - Default
   - TransparentFX

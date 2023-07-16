@@ -9,7 +9,7 @@ public class gameManager : MonoBehaviour
     void Awake()
     {
         Time.timeScale = 0.0f;
-        car = GameObject.Find("car");
+        car = GameObject.Find("CAR");
         platform=GameObject.Find("platform");
         XClamp=((platform.transform.localScale.x-car.transform.localScale.x) /2)-0.3f;
     }

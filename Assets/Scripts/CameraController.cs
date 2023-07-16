@@ -36,7 +36,7 @@ public class cameraController : MonoBehaviour
 
     void makeChild()
     {
-        gameObject.transform.SetParent(GameObject.Find("car").transform);
+        gameObject.transform.SetParent(GameObject.Find("CAR").transform);
     }
 
 
