@@ -15,6 +15,7 @@ TagManager:
   - FinishLine
   - Obstacle
   - bant
+  - Slot
   layers:
   - Default
   - TransparentFX

@@ -6,9 +6,9 @@ public class DragAndDrop : MonoBehaviour
 {
     private GameObject selectedObject;
     private Vector3 initialPosition;
+    public GameObject level1GunPrefab;
     public GameObject level2GunPrefab;
-    private float yOffset = 1.01f;
-
+    public float yOffset = 2.21f;
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -16,7 +16,7 @@ public class DragAndDrop : MonoBehaviour
             if (selectedObject == null)
             {
                 RaycastHit hit = CastRay();
-
+                
                 if (hit.collider != null)
                 {
                     if (!hit.collider.CompareTag("Silah"))
@@ -34,8 +34,9 @@ public class DragAndDrop : MonoBehaviour
         {
             if (selectedObject != null)
             {
-                Collider[] colliders = Physics.OverlapSphere(selectedObject.transform.position, 0.1f);
-                bool droppedOnSilah = false;
+                Vector3 objeBoyutu = selectedObject.transform.localScale + new Vector3(0, 3, 0);
+                Collider[] colliders = Physics.OverlapBox(selectedObject.transform.position, objeBoyutu / 2);
+                bool droppedOnSlot = false;
 
                 foreach (Collider collider in colliders)
                 {
@@ -45,16 +46,27 @@ public class DragAndDrop : MonoBehaviour
                         newObject.transform.parent = collider.gameObject.transform.parent;
                         Destroy(selectedObject);
                         Destroy(collider.gameObject);
-                        droppedOnSilah = true;
+                        droppedOnSlot = true;
                         break;
-                    }
-                    if (collider.CompareTag("car") && collider.gameObject != selectedObject)
-                    {
-                        // buraya silah yerleştirme kodları yazılacak arabanin ilgili slotlarına götürücek silahları otomatk olarak
                     }
                 }
 
-                if (!droppedOnSilah)
+                if (!droppedOnSlot)
+                {
+                    foreach (Collider collider in colliders)
+                    {
+                        if (collider.CompareTag("Slot") && collider.gameObject != selectedObject)
+                        {
+                            Destroy(selectedObject);
+                            Vector3 newPosition = new Vector3(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y + 0.5f, collider.gameObject.transform.position.z);
+                            GameObject newObject = Instantiate(level1GunPrefab, newPosition, Quaternion.identity, collider.gameObject.transform);
+                            droppedOnSlot = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!droppedOnSlot)
                 {
                     selectedObject.transform.position = initialPosition;
                 }
@@ -68,28 +80,19 @@ public class DragAndDrop : MonoBehaviour
         {
             Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(selectedObject.transform.position).z);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
-
-            Collider[] colliders = Physics.OverlapSphere(selectedObject.transform.position, 0.1f);
-
-            if (colliders.Length == 0)
-            {
-                yOffset = 1.01f;
-            }
-            else
-            {
-                foreach (Collider collider in colliders)
-                {
-                    if (collider.CompareTag("car") && collider.gameObject != selectedObject)
-                    {
-                        yOffset += 1f;
-                        break;
-                    }
-                }
-            }
-
             selectedObject.transform.position = new Vector3(worldPosition.x, yOffset, worldPosition.z);
         }
     }
+
+    /* private void OnDrawGizmos()
+    {
+        if (selectedObject != null)
+        {
+            Vector3 objeBoyutu = selectedObject.transform.localScale + new Vector3(0, 3, 0);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(selectedObject.transform.position, objeBoyutu);
+        }
+    } */
 
     private RaycastHit CastRay()
     {
