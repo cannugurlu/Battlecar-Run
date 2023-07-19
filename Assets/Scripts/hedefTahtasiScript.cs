@@ -7,7 +7,7 @@ public class hedefTahtasiScript : MonoBehaviour
 {
     Vector3 initialPos,hedefPos,hedefRot;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "CAR") bantagit();
     }

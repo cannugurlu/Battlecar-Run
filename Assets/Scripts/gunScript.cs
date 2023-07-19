@@ -8,7 +8,7 @@ public class GunScript : MonoBehaviour
     [SerializeField] float bulletSpeed;
     public float bulletLifeTime=1; // menzil
     public float fireRate=1; // atýþ sýklýðý
-    public float power;
+    public int damageetobox,damagetogate;
     public float minFireRate;
     public float minBulletLifeTime;
     //public static GunScript instance;
