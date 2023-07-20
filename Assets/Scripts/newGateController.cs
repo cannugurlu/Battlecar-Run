@@ -8,7 +8,7 @@ using DG.Tweening;
 
 public class newGateController : MonoBehaviour
 {
-    [SerializeField] int effectiveNumber;
+    public int effectiveNumber;
     GameObject[] childsofGate;
     UnityEngine.Color hedefRenk;
     private float gecenSure = 0f;
@@ -28,163 +28,170 @@ public class newGateController : MonoBehaviour
     private void Awake()
     {
         gunScript = Object.FindObjectOfType<GunScript>();
-        randomVariable = Random.Range(0, 2);
     }
     private void Start()
     {
-        Invoke(nameof(gateCustomizer), 0.05f);
-        // Child nesnelerini al
-        childsofGate = new GameObject[transform.childCount];
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            childsofGate[i] = transform.GetChild(i).gameObject;
-        }
 
-        // Hedef renk olarak (100, 214, 255) kullan
-        hedefRenk = new UnityEngine.Color(100f / 255f, 214f / 255f, 255f / 255f, 50f/255f);
+
+
+
+
+
+
+
+        //Invoke(nameof(gateCustomizer), 0.05f);
+        //// Child nesnelerini al
+        //childsofGate = new GameObject[transform.childCount];
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    childsofGate[i] = transform.GetChild(i).gameObject;
+        //}
+
+        //// Hedef renk olarak (100, 214, 255) kullan
+        //hedefRenk = new UnityEngine.Color(100f / 255f, 214f / 255f, 255f / 255f, 50f/255f);
     }
     void Update()
     {
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "bullet")
-        {
-            Destroy(other.gameObject);
-            effectiveNumber+=10;
-            if (randomVariable == 0) // atýþ hýzý
-            {
-                if (effectiveNumber < 0)
-                {
-                    GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n" + effectiveNumber.ToString();
-                }
-                else if (effectiveNumber == 0)
-                {
-                    shouldStart = true;
-                }
-                else
-                {
-                    GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n+" + effectiveNumber.ToString();
-                }
-                if (shouldStart)
-                {
-                    if (!isCoroutineRunning && !isCoroutineDone)
-                    {
-                        StartCoroutine(redtogreen());
-                    }
-                }
-            }
-            if (randomVariable == 1) // menzil
-            {
-                if (effectiveNumber < 0)
-                {
-                    GetComponentInChildren<TextMeshPro>().text = "Menzil\n" + effectiveNumber.ToString();
-                }
-                else if (effectiveNumber == 0)
-                {
-                    shouldStart=true;
-                }
-                else
-                {
-                    GetComponentInChildren<TextMeshPro>().text = "Menzil\n+" + effectiveNumber.ToString();
-                }
-                if (shouldStart)
-                {
-                    if (!isCoroutineRunning && !isCoroutineDone)
-                    {
-                        StartCoroutine(redtogreen());
-                    }
-                }
-            }
-        }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "bullet")
+    //    {
+    //        Destroy(other.gameObject);
+    //        effectiveNumber+=10;
+    //        if (randomVariable == 0) // atýþ hýzý
+    //        {
+    //            if (effectiveNumber < 0)
+    //            {
+    //                GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n" + effectiveNumber.ToString();
+    //            }
+    //            else if (effectiveNumber == 0)
+    //            {
+    //                shouldStart = true;
+    //            }
+    //            else
+    //            {
+    //                GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n+" + effectiveNumber.ToString();
+    //            }
+    //            if (shouldStart)
+    //            {
+    //                if (!isCoroutineRunning && !isCoroutineDone)
+    //                {
+    //                    StartCoroutine(redtogreen());
+    //                }
+    //            }
+    //        }
+    //        if (randomVariable == 1) // menzil
+    //        {
+    //            if (effectiveNumber < 0)
+    //            {
+    //                GetComponentInChildren<TextMeshPro>().text = "Menzil\n" + effectiveNumber.ToString();
+    //            }
+    //            else if (effectiveNumber == 0)
+    //            {
+    //                shouldStart=true;
+    //            }
+    //            else
+    //            {
+    //                GetComponentInChildren<TextMeshPro>().text = "Menzil\n+" + effectiveNumber.ToString();
+    //            }
+    //            if (shouldStart)
+    //            {
+    //                if (!isCoroutineRunning && !isCoroutineDone)
+    //                {
+    //                    StartCoroutine(redtogreen());
+    //                }
+    //            }
+    //        }
+    //    }
 
-        if (other.gameObject.name == "CAR")
-        {
-            StartCoroutine(FadeOut(gameObject, transparency, duration));
-            gameObject.GetComponent<BoxCollider>().enabled = false;
+    //    if (other.gameObject.name == "CAR")
+    //    {
+    //        StartCoroutine(FadeOut(gameObject, transparency, duration));
+    //        gameObject.GetComponent<BoxCollider>().enabled = false;
 
-            if (randomVariable == 1 && effectiveNumber < 0) menzildegisimi(false);
-            if (randomVariable == 1 && effectiveNumber > 0) menzildegisimi(true);
-            if (randomVariable == 0 && effectiveNumber < 0) ratedegisimi(false);
-            if (randomVariable == 0 && effectiveNumber > 0) ratedegisimi(true);
+    //        if (randomVariable == 1 && effectiveNumber < 0) menzildegisimi(false);
+    //        if (randomVariable == 1 && effectiveNumber > 0) menzildegisimi(true);
+    //        if (randomVariable == 0 && effectiveNumber < 0) ratedegisimi(false);
+    //        if (randomVariable == 0 && effectiveNumber > 0) ratedegisimi(true);
 
-        }
-    }
-
-
+    //    }
+    //}
 
 
-    void gateCustomizer()
-    {
-        effectiveNumber=Random.Range(1, 3)*100;
-        if (randomVariable == 0) // atýþ hýzý
-        {
-            if (gameObject.tag == "GateGood")
-            {
-                GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n +" + effectiveNumber.ToString();
-            }
-            else if (gameObject.tag == "GateBad")
-            {
-                effectiveNumber = -effectiveNumber;
-                GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n " + effectiveNumber.ToString();
-            }
-        }
-        else if(randomVariable == 1) // menzil
-        {
-            if (gameObject.tag == "GateGood")
-            {
-                GetComponentInChildren<TextMeshPro>().text = "Menzil\n +" + effectiveNumber.ToString();
-            }
-            else if (gameObject.tag == "GateBad")
-            {
-                effectiveNumber = -effectiveNumber;
-                GetComponentInChildren<TextMeshPro>().text = "Menzil\n" + effectiveNumber.ToString();
-            }
-        }
-    }
 
 
-    void menzildegisimi(bool positive)
-    {
-        print("menzil calisti");
-        isChanging = true;
-        if(positive)
-        {
-            gunScript.bulletLifeTime += effectiveNumber;
-            print("menzil eklendi");
-        }
-        if(!positive)
-        {
-            gunScript.bulletLifeTime += effectiveNumber ;
-            if (gunScript.bulletLifeTime <= gunScript.minBulletLifeTime)
-            {
-                gunScript.bulletLifeTime = gunScript.minBulletLifeTime;
-            }
-            print("menzil çýkarýldý");
-        }
-        isChanging =false;
-    }
-    void ratedegisimi(bool positive)
-    {
-        print("rate calisti");
-        isChanging = true;
-        if (positive)
-        {
-            gunScript.fireRate -= effectiveNumber/10;
-            print("Rate eklendi");
-        }
-        if (!positive)
-        {
-            gunScript.fireRate -= effectiveNumber/10;
-            if (gunScript.fireRate <= gunScript.minFireRate)
-            {
-                gunScript.fireRate = gunScript.minFireRate;
-            }
-            print("Rate çýkarýldý");
-        }
-        isChanging = false;
-    }
+    //void gateCustomizer()
+    //{
+    //    effectiveNumber=Random.Range(1, 3)*100;
+    //    if (randomVariable == 0) // atýþ hýzý
+    //    {
+    //        if (gameObject.tag == "GateGood")
+    //        {
+    //            GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n +" + effectiveNumber.ToString();
+    //        }
+    //        else if (gameObject.tag == "GateBad")
+    //        {
+    //            effectiveNumber = -effectiveNumber;
+    //            GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n " + effectiveNumber.ToString();
+    //        }
+    //    }
+    //    else if(randomVariable == 1) // menzil
+    //    {
+    //        if (gameObject.tag == "GateGood")
+    //        {
+    //            GetComponentInChildren<TextMeshPro>().text = "Menzil\n +" + effectiveNumber.ToString();
+    //        }
+    //        else if (gameObject.tag == "GateBad")
+    //        {
+    //            effectiveNumber = -effectiveNumber;
+    //            GetComponentInChildren<TextMeshPro>().text = "Menzil\n" + effectiveNumber.ToString();
+    //        }
+    //    }
+    //}
+
+
+    //void menzildegisimi(bool positive)
+    //{
+    //    print("menzil calisti");
+    //    isChanging = true;
+    //    if(positive)
+    //    {
+    //        gunScript.bulletLifeTime += effectiveNumber;
+    //        print("menzil eklendi");
+    //    }
+    //    if(!positive)
+    //    {
+    //        gunScript.bulletLifeTime += effectiveNumber ;
+    //        if (gunScript.bulletLifeTime <= gunScript.minBulletLifeTime)
+    //        {
+    //            gunScript.bulletLifeTime = gunScript.minBulletLifeTime;
+    //        }
+    //        print("menzil çýkarýldý");
+    //    }
+    //    isChanging =false;
+    //}
+    //void ratedegisimi(bool positive)
+    //{
+    //    print("rate calisti");
+    //    isChanging = true;
+    //    if (positive)
+    //    {
+    //        gunScript.fireRate -= effectiveNumber/10;
+    //        print("Rate eklendi");
+    //    }
+    //    if (!positive)
+    //    {
+    //        gunScript.fireRate -= effectiveNumber/10;
+    //        if (gunScript.fireRate <= gunScript.minFireRate)
+    //        {
+    //            gunScript.fireRate = gunScript.minFireRate;
+    //        }
+    //        print("Rate çýkarýldý");
+    //    }
+    //    isChanging = false;
+    //}
 
 
 
