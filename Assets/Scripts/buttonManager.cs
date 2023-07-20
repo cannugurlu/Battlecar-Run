@@ -20,7 +20,7 @@ public class buttonManager : MonoBehaviour
             if (!slotScript.IsFilled())
             {
                 Vector3 newPosition = new Vector3(slot.transform.position.x, slot.transform.position.y + 0.5f, slot.transform.position.z);
-                Instantiate(level1GunPrefab, newPosition, Quaternion.identity, slot.transform);
+                Instantiate(level1GunPrefab, newPosition, Quaternion.Euler(0, 90f, 0), slot.transform);
                 break;
             }
         }
