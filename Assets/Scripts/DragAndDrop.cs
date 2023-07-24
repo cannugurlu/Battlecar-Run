@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
+    GunScript gunScript;
+    gameManager gameManager;
     private Vector3 initialPosition;
-    public GameObject[] GunPrefabs;
     private float dragOffset = 1.35f;
     Vector3 offset;
+
+    void Start() 
+    {
+        gameManager = FindObjectOfType<gameManager>();
+        gunScript = GetComponent<GunScript>();
+    }
  
     void OnMouseDown()
     {
@@ -23,7 +30,7 @@ public class DragAndDrop : MonoBehaviour
  
     void OnMouseUp()
     {
-        Vector3 objeBoyutu = transform.localScale + new Vector3(0, 3, 0);
+        Vector3 objeBoyutu = transform.localScale + new Vector3(0, 4, 0);
         Collider[] colliders = Physics.OverlapBox(transform.position, objeBoyutu / 2);
         bool droppedOnSlot = false;
 
@@ -31,12 +38,18 @@ public class DragAndDrop : MonoBehaviour
         {
             if (collider.CompareTag("Silah") && collider.gameObject != gameObject)
             {
-                GameObject newObject = Instantiate(GunPrefabs[GunSpecs.gunLevel + 1], collider.gameObject.transform.position, Quaternion.identity);
-                newObject.transform.parent = collider.gameObject.transform.parent;
-                Destroy(gameObject);
-                Destroy(collider.gameObject);
-                droppedOnSlot = true;
-                break;
+                GunScript otherGunScript = collider.gameObject.GetComponent<GunScript>();
+
+                if (otherGunScript != null && otherGunScript.gunLevel == gunScript.gunLevel)
+                {
+                    Quaternion newRotation = gameManager.GunPrefabs[gunScript.gunLevel + 1].transform.rotation;
+                    GameObject newObject = Instantiate(gameManager.GunPrefabs[gunScript.gunLevel + 1], collider.gameObject.transform.position, newRotation);
+                    newObject.transform.parent = collider.gameObject.transform.parent;
+                    Destroy(gameObject);
+                    Destroy(collider.gameObject);
+                    droppedOnSlot = true;
+                    break;
+                }
             }
         }
 
@@ -77,7 +90,7 @@ public class DragAndDrop : MonoBehaviour
     {
         if (gameObject != null)
         {
-            Vector3 objeBoyutu = transform.localScale + new Vector3(0, 3, 0);
+            Vector3 objeBoyutu = transform.localScale + new Vector3(0, 4, 0);
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(transform.position, objeBoyutu);
         }

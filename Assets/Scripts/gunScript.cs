@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-    [SerializeField] public int gunLevel = 0;
-
+    public int gunLevel;
     [SerializeField] GameObject bulletobject;
     [SerializeField] float bulletSpeed;
     public float bulletLifeTime=1; // menzil
-    public float fireRate=1; // atýþ sýklýðý
+    public float fireRate=1; // atï¿½ï¿½ sï¿½klï¿½ï¿½ï¿½
     public int damageetobox,damagetogate;
     public float minFireRate;
     public float minBulletLifeTime;

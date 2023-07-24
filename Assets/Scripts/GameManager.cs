@@ -6,6 +6,7 @@ public class gameManager : MonoBehaviour
 {
     GameObject car, platform;
     float XClamp,clampedValue;
+    public GameObject[] GunPrefabs;
     void Awake()
     {
         Time.timeScale = 0.0f;
@@ -16,6 +17,7 @@ public class gameManager : MonoBehaviour
     void Start()
     {
     }
+    
     void Update()
     {
         clampedValue=car.transform.position.x;

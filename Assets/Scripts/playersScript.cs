@@ -5,49 +5,34 @@ using UnityEngine;
 
 public class playersScript : MonoBehaviour
 {
-    [SerializeField] float[] hiz = { 5, 5 };
     Rigidbody rb;
-    public Vector3 fingerDownPos,fingerUpPos;
-    public float velocity,yatayV;
-    private bool detectSwipe = false;
+    public float velocity;
+    [SerializeField] private float speed = 1f;
+    [SerializeField] private float ClampX = 2.5f;
+    private Touch touch;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, 1) * velocity * Time.deltaTime;
     }
-    void Start()
-    {
-    }
+    
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (cameraController.cameraFollow)
         {
-            yatayV = (fingerUpPos.x - fingerDownPos.x) / 50;  //yatay hýz 50 sayýsýna baðlý;
+            float x =transform.position.x;
+            float _x =Mathf.Clamp(x,-ClampX, ClampX) ;
+            transform.position = new Vector3(_x,transform.position.y,transform.position.z);
+            
+            if (Input.touchCount >0)
+            {
+                touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    transform.position = new Vector3(transform.position.x + touch.deltaPosition.x * speed,transform.position.y,transform.position.z);
+                }
+            }
         }
-        if(Input.touchCount>0 && (Input.GetTouch(0).phase==TouchPhase.Began||Input.GetTouch(0).phase==TouchPhase.Ended)){ 
-            yatayV = 0; 
-        }
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            fingerDownPos = Input.GetTouch(0).position;
-        }
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-            fingerUpPos = Input.GetTouch(0).position;
-        }
-
-        if (fingerDownPos.x < fingerUpPos.x)
-        {
-            print("saga");
-            transform.Translate(transform.right * yatayV * Time.deltaTime);
-        }
-        else if (fingerDownPos.x > fingerUpPos.x)
-        {
-            print("sola");
-            transform.Translate(transform.right * yatayV * Time.deltaTime);
-        }
-        else return;
-
     }
 }
