@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
+    [SerializeField] public int gunLevel = 0;
+
     [SerializeField] GameObject bulletobject;
     [SerializeField] float bulletSpeed;
     public float bulletLifeTime=1; // menzil
@@ -11,21 +13,12 @@ public class GunScript : MonoBehaviour
     public int damageetobox,damagetogate;
     public float minFireRate;
     public float minBulletLifeTime;
+    public static bulletManager bulletScript;
     //public static GunScript instance;
 
-    private void Awake()
-    {
-        //instance = this;
-    }
     private void Start()
     {
         StartAtesEt();
-    }
-
-    private void Update()
-    {
-        //print("fireRate " + fireRate);
-        //print("mermi lifetime " + bulletLifeTime);
     }
 
     public void StartAtesEt()
@@ -43,6 +36,10 @@ public class GunScript : MonoBehaviour
                 bullet.GetComponent<Rigidbody>().velocity = Vector3.forward * bulletSpeed;
 
                 bullet.transform.Rotate(0, 90, 0);
+
+                bulletScript = bullet.GetComponent<bulletManager>();
+
+                bulletScript.bulletDamagetoBox = damageetobox;
 
                 Destroy(bullet, bulletLifeTime);
             }

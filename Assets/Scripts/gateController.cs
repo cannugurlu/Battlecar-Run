@@ -13,12 +13,12 @@ public class gateController : MonoBehaviour
     private bool isGateDeleted=false;
     private bool isCarChanged = false;
     public Material blueMaterial;
-    GunScript gunScript;
+    GunScript[] gunScript;
 
 
     void Start()
     {
-        gunScript = Object.FindObjectOfType<GunScript>();
+        gunScript = Object.FindObjectsOfType<GunScript>();
         gateGood = gameObject.transform.Find("GateGood").gameObject;
         gateBad = gameObject.transform.Find("GateBad").gameObject;
     }
@@ -49,7 +49,13 @@ public class gateController : MonoBehaviour
         }
         if(other.gameObject.tag == "bullet")
         {
-            gateNumber += gunScript.damagetogate;
+            //gateNumber += gunScript.damagetogate;
+
+            foreach (GunScript g in gunScript)
+            {
+                gateNumber += g.damagetogate;
+            }
+
             Destroy(other.gameObject);
         }
     }
@@ -92,24 +98,16 @@ public class gateController : MonoBehaviour
         print("calisti");
         if(isRange)
         {
-            if (isPos) // Range artirma
+            foreach (GunScript g in gunScript)
             {
-                gunScript.bulletLifeTime += gateNumber / 200.0f;
-            }
-            else    // Range azaltma
-            {
-                gunScript.bulletLifeTime += gateNumber / 200.0f;
+                g.bulletLifeTime += gateNumber / 200.0f;
             }
         }
         else
         {
-            if (isPos)    //attack speed artirma
+            foreach (GunScript g in gunScript)
             {
-                gunScript.fireRate -= gateNumber / 200.0f;
-            }
-            else     //attack speed azaltma
-            {
-                gunScript.fireRate -= gateNumber / 200.0f;
+                g.fireRate -= gateNumber / 200.0f;
             }
         }
     }
