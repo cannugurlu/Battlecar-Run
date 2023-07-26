@@ -310,8 +310,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.0488276, y: 2.2037265, z: 0.99999964}
-  m_Center: {x: -0.067255564, y: -0.099484, z: -1.2668161e-16}
+  m_Size: {x: 3.4820583, y: 1.9438574, z: 0.48464167}
+  m_Center: {x: -0.1891215, y: -0.22941896, z: 0.022333324}
 --- !u!114 &6729657528047402252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7b8b2194760424484a6bcac5e79919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunLevel: 0
+  gunLevel: 1
   bulletobject: {fileID: 0}
   bulletSpeed: 0
   bulletLifeTime: 1

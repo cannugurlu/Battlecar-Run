@@ -258,9 +258,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2371366180368228228}
+  - component: {fileID: 8465421769664065748}
   - component: {fileID: 1241127800032352983}
   - component: {fileID: 7206669300363910256}
-  - component: {fileID: 8465421769664065748}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Silah
@@ -286,6 +286,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 60}
+--- !u!65 &8465421769664065748
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8013724388144613736}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.6484406, y: 0.773337, z: 0.36245534}
+  m_Center: {x: 0.13756573, y: -0.20018421, z: -0.000000955029}
 --- !u!114 &1241127800032352983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7b8b2194760424484a6bcac5e79919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunLevel: 1
+  gunLevel: 2
   bulletobject: {fileID: 0}
   bulletSpeed: 0
   bulletLifeTime: 1
@@ -319,24 +340,3 @@ MonoBehaviour:
   damagetogate: 0
   minFireRate: 0
   minBulletLifeTime: 0
---- !u!65 &8465421769664065748
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8013724388144613736}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.6484406, y: 0.6988263, z: 1}
-  m_Center: {x: 0.13756573, y: -0.15961659, z: 0}

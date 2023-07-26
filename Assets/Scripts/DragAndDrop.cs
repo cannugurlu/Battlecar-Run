@@ -59,10 +59,15 @@ public class DragAndDrop : MonoBehaviour
             {
                 if (collider.CompareTag("Slot") && collider.gameObject != gameObject)
                 {
-                    Vector3 newPosition = new Vector3(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y + 0.5f, collider.gameObject.transform.position.z);
-                    transform.position = newPosition;
-                    droppedOnSlot = true;
-                    break;
+                    SlotScript slotScript = collider.gameObject.GetComponent<SlotScript>();
+
+                    if (slotScript != null && !slotScript.is_filled)
+                    {
+                        Vector3 newPosition = new Vector3(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y + 0.5f, collider.gameObject.transform.position.z);
+                        transform.position = newPosition;
+                        transform.parent = collider.gameObject.transform;
+                        droppedOnSlot = true;
+                    }
                 }
             }
         }

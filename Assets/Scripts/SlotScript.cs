@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlotScript : MonoBehaviour
 {
-    private bool is_filled = false;
+    public bool is_filled = false;
 
     public bool IsFilled()
     {
