@@ -49,6 +49,8 @@ public class cameraController : MonoBehaviour
 
     public void startLevelButton()
     {
+        /* Bu fonksiyon button managera tanışacak
+        ayrıca silahları yukarı doğru bakacak konuma getirecek */
         Time.timeScale = 1;
         startButton.SetActive(false);
         buyButton.SetActive(false);

@@ -19,6 +19,7 @@ public class playersScript : MonoBehaviour
     
     void Update()
     {
+        // minigame kontrolü eklenecek
         if (cameraController.cameraFollow)
         {
             float x =transform.position.x;
