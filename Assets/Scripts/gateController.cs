@@ -54,6 +54,7 @@ public class gateController : MonoBehaviour
             foreach (GunScript g in gunScript)
             {
                 gateNumber += g.damagetogate;
+                
             }
 
             Destroy(other.gameObject);

@@ -16,6 +16,8 @@ TagManager:
   - Obstacle
   - bant
   - Slot
+  - minigameController
+  - target
   layers:
   - Default
   - TransparentFX

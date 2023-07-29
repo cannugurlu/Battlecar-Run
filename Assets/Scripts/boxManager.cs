@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using TMPro;
 using System.Linq;
+using Microsoft.Win32.SafeHandles;
 
 public class boxManager : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class boxManager : MonoBehaviour
     float canBari = 100.0f;
     private bool isTextureChanged=false;
     private bool isTargetMoved = false;
-
+    public float velocity = 200.0f;
+    public float zAxis;
     private void Awake()
     {
         box = this.gameObject;
@@ -25,6 +27,7 @@ public class boxManager : MonoBehaviour
         if (other.gameObject.tag == "bullet")
         {
             canBari -= other.gameObject.GetComponent<bulletManager>().bulletDamagetoBox;
+            Destroy(other.gameObject);
         }
     }
 
@@ -59,6 +62,7 @@ public class boxManager : MonoBehaviour
         hedefPos = new Vector3(GameObject.FindWithTag("bant").transform.position.x+0.4f,GameObject.FindWithTag("bant").transform.position.y+0.2f,gameObject.transform.position.z);
         hedefRot = new Vector3(-180, 250, -100);
         targetObj.transform.DOMove(hedefPos, 1);
+        targetObj.GetComponent<Rigidbody>().isKinematic = false;
         targetObj.transform.DORotate(hedefRot, 1).OnComplete(()=>
         targetObj.GetComponent<Rigidbody>().velocity=new Vector3(0,0,1)*1000*Time.deltaTime);
     }

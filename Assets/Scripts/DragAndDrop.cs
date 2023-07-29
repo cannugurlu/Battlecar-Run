@@ -66,6 +66,7 @@ public class DragAndDrop : MonoBehaviour
                         Vector3 newPosition = new Vector3(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y + 0.5f, collider.gameObject.transform.position.z);
                         transform.position = newPosition;
                         transform.parent = collider.gameObject.transform;
+                        
                         droppedOnSlot = true;
                     }
                 }
