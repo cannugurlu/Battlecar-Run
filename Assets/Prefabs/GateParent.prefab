@@ -181,7 +181,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 421420667351979576}
-  - component: {fileID: 3789155186014148382}
   - component: {fileID: 4522247114531727241}
   m_Layer: 0
   m_Name: GateGood
@@ -208,20 +207,6 @@ Transform:
   m_Father: {fileID: 1142783655684407026}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &3789155186014148382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050182526614998146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7be259e4450474bb6a493c4f53d6fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectiveNumber: 0
-  sure: 3
 --- !u!65 &4522247114531727241
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -720,7 +705,7 @@ Transform:
   - {fileID: 421420667351979576}
   - {fileID: 4698925863948711479}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!65 &3896099752572401438
 BoxCollider:
@@ -759,6 +744,7 @@ MonoBehaviour:
   gateBad: {fileID: 0}
   gateNumber: 100000
   isRange: 1
+  blueMaterial: {fileID: 0}
 --- !u!1 &5367763548459936909
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +754,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4698925863948711479}
-  - component: {fileID: 6108030036361047236}
   - component: {fileID: 6560845449999299158}
   m_Layer: 0
   m_Name: GateBad
@@ -795,20 +780,6 @@ Transform:
   m_Father: {fileID: 1142783655684407026}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &6108030036361047236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5367763548459936909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7be259e4450474bb6a493c4f53d6fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectiveNumber: 0
-  sure: 3
 --- !u!65 &6560845449999299158
 BoxCollider:
   m_ObjectHideFlags: 0

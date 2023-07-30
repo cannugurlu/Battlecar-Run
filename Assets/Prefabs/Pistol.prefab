@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8974765171194743436}
   - component: {fileID: 8979954097440862718}
   - component: {fileID: 5046621112914934634}
-  - component: {fileID: 7617304914219593414}
+  - component: {fileID: -1998578870017213668}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Silah
@@ -102,7 +102,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30acfbcd55a07f94e8a1a39006ba82c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7617304914219593414
+--- !u!114 &-1998578870017213668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,15 +179,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781152354865523754, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.03
+      value: -2.43
       objectReference: {fileID: 0}
     - target: {fileID: 7781152354865523754, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.58
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 7781152354865523754, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.77
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7781152354865523754, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -216,6 +216,14 @@ PrefabInstance:
     - target: {fileID: 7781152354865523754, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650950206699043389, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
+      propertyPath: fireRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650950206699043389, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
+      propertyPath: damageetobox
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

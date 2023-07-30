@@ -92,13 +92,13 @@ public class DragAndDrop : MonoBehaviour
         return new Vector3 (WorldPosition.x, 1f , WorldPosition.z);
     }
 
-    private void OnDrawGizmos()
-    {
-        if (gameObject != null)
-        {
-            Vector3 objeBoyutu = transform.localScale + new Vector3(0, 4, 0);
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position, objeBoyutu);
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    if (gameObject != null)
+    //    {
+    //        Vector3 objeBoyutu = transform.localScale + new Vector3(0, 4, 0);
+    //        Gizmos.color = Color.red;
+    //        Gizmos.DrawWireCube(transform.position, objeBoyutu);
+    //    }
+    //}
 }

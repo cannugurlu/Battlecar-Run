@@ -50,7 +50,7 @@ public class gateController : MonoBehaviour
         if(other.gameObject.tag == "bullet")
         {
             //gateNumber += gunScript.damagetogate;
-
+            print("mermi vurdu");
             foreach (GunScript g in gunScript)
             {
                 gateNumber += g.damagetogate;

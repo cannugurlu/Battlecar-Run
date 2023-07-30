@@ -64,7 +64,7 @@ public class boxManager : MonoBehaviour
         targetObj.transform.DOMove(hedefPos, 1);
         targetObj.GetComponent<Rigidbody>().isKinematic = false;
         targetObj.transform.DORotate(hedefRot, 1).OnComplete(()=>
-        targetObj.GetComponent<Rigidbody>().velocity=new Vector3(0,0,1)*1000*Time.deltaTime);
+        targetObj.GetComponent<Rigidbody>().velocity=new Vector3(0,0,1)*3000*Time.deltaTime);
     }
 
     void boxTextureChange()
