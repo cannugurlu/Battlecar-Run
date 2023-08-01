@@ -16,9 +16,14 @@ public class buttonManager : MonoBehaviour
     public Vector3 camTargetPos, camTargetRot;
     public static float time;
     public GameObject[] carSlots;
+    public List<GameObject> guns = new List<GameObject>();
+
+    public static buttonManager instance;
 
     void Awake() 
     {
+        instance = this;
+
         Cam = GameObject.Find("Main Camera");
         time = 0.7f;
         camTargetPos = new Vector3(0, 6.55f, -3.93f);
@@ -54,6 +59,16 @@ public class buttonManager : MonoBehaviour
         buyButton.SetActive(false);
         moneyButton.SetActive(false);
         cameraMove(camTargetPos, camTargetRot);
+
+        foreach (GameObject slot in carSlots)
+        {
+            if (slot.transform.childCount > 0)
+            {
+                print("akoþsg");
+                guns.Add(slot.transform.GetChild(0).gameObject);
+            }
+        }
+
         gunAngleModifier();
     }
 
