@@ -30,6 +30,7 @@ public class GunScript : MonoBehaviour
         {
             if (Time.timeScale > 0)
             {
+                //bullet yönü objenin ucuna bakmalı ona göre ayarlarsan velocityi de forward yerine baktığı yöne gönderirsen düzelir
                 GameObject bullet = Instantiate(bulletobject, transform.position, Quaternion.identity);
 
                 bullet.GetComponent<Rigidbody>().velocity = Vector3.forward * bulletSpeed;

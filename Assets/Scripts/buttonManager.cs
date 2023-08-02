@@ -6,16 +6,16 @@ using DG.Tweening;
 
 public class buttonManager : MonoBehaviour
 {
-    public GameObject Cam;
+    private GameObject Cam;
     public GameObject startButton;
     public GameObject buyButton;
     public GameObject moneyButton;
     gameManager gameManager;
     private List<GameObject> SlotList = new List<GameObject>();
-    public Transform Slots;
+    public Transform startSlots;
+    public Transform carSlots;
     public Vector3 camTargetPos, camTargetRot;
     public static float time;
-    public GameObject[] carSlots;
     public List<GameObject> guns = new List<GameObject>();
 
     public static buttonManager instance;
@@ -33,9 +33,9 @@ public class buttonManager : MonoBehaviour
 
     public void buyWeaponButton()
     {
-        foreach (Transform child in Slots)
+        foreach (Transform slot in startSlots)
         {
-            SlotList.Add(child.gameObject);
+            SlotList.Add(slot.gameObject);
         }
         foreach (GameObject slot in SlotList)
         {
@@ -52,20 +52,28 @@ public class buttonManager : MonoBehaviour
 
     public void startLevelButton()
     {
-        /* Bu fonksiyon button managera tanýþacak
-        ayrýca silahlarý yukarý doðru bakacak konuma getirecek */
         Time.timeScale = 1;
         startButton.SetActive(false);
         buyButton.SetActive(false);
         moneyButton.SetActive(false);
         cameraMove(camTargetPos, camTargetRot);
 
-        foreach (GameObject slot in carSlots)
+        //Araba silahlarÄ± listesi set edilir.
+        foreach (Transform slot in carSlots)
         {
-            if (slot.transform.childCount > 0)
+            if (slot.childCount > 0)
             {
-                print("akoþsg");
-                guns.Add(slot.transform.GetChild(0).gameObject);
+                guns.Add(slot.GetChild(0).gameObject);
+            }
+        }
+
+        //Start SlotlarÄ± dolu ise silahlarÄ± pasife alÄ±r.
+        foreach (Transform slot in startSlots)
+        {
+            if(slot.childCount > 0)
+            {
+                GameObject gun = slot.GetChild(0).gameObject;
+                gun.SetActive(false);
             }
         }
 
@@ -83,14 +91,14 @@ public class buttonManager : MonoBehaviour
 
     private void gunAngleModifier()
     {
-        foreach (GameObject slot in carSlots)
+        foreach (Transform slot in carSlots)
         {
-            if(slot.transform.childCount != 0)
+            if(slot.childCount != 0)
             {
-                GameObject gun = slot.transform.GetChild(0).gameObject;
-                slot.transform.GetChild(0).SetParent(null);
-                gun.transform.DORotate(new Vector3(0, 90, 0), 0.5f);
-                gun.transform.SetParent(GameObject.Find("CAR").transform);
+                Transform gun = slot.GetChild(0);
+                gun.SetParent(null);
+                gun.DORotate(new Vector3(0, 90, 0), 0.5f);
+                gun.SetParent(GameObject.Find("CAR").transform);
             }
         }
     }
