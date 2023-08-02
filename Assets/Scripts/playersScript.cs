@@ -20,7 +20,6 @@ public class playersScript : MonoBehaviour
         instance = this;
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, 1) * velocity * Time.deltaTime;
-       // buttonManager.instance.guns
     }
     
     void Update()
@@ -44,12 +43,18 @@ public class playersScript : MonoBehaviour
             }
             else
             {
-                transform.DOMoveX(0,1);
                 //CLAMP
-
-                //float x = transform.position.x;
-                //float _x = Mathf.Clamp(x, -ClampX, ClampX);
-                //transform.position = new Vector3(_x, transform.position.y, transform.position.z);
+                foreach (GameObject obj in buttonManager.instance.guns)
+                {
+                    if (obj.transform.rotation.y < 45)
+                    {
+                        obj.transform.rotation = Quaternion.EulerAngles(transform.rotation.x, 45, transform.rotation.z);
+                    }
+                    if (obj.transform.rotation.y > 135)
+                    {
+                        obj.transform.rotation = Quaternion.EulerAngles(transform.rotation.x, 135, transform.rotation.z);
+                    }
+                }
 
                 if (Input.touchCount > 0)
                 {

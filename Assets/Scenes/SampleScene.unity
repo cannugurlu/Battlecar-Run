@@ -3839,7 +3839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 200
   speed: 0.0015
-  rotationSpeed: 1
+  rotationSpeed: 25
   ClampX: 2.5
 --- !u!4 &2098016272 stripped
 Transform:
