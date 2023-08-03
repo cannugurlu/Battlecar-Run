@@ -46,14 +46,9 @@ public class playersScript : MonoBehaviour
                 //CLAMP
                 foreach (GameObject obj in buttonManager.instance.guns)
                 {
-                    if (obj.transform.rotation.y < 45)
-                    {
-                        obj.transform.rotation = Quaternion.EulerAngles(transform.rotation.x, 45, transform.rotation.z);
-                    }
-                    if (obj.transform.rotation.y > 135)
-                    {
-                        obj.transform.rotation = Quaternion.EulerAngles(transform.rotation.x, 135, transform.rotation.z);
-                    }
+                    float rotY = obj.transform.rotation.y;
+                    float _rotY = Mathf.Clamp(rotY, 45, 135);
+                    obj.transform.rotation = Quaternion.EulerAngles(obj.transform.rotation.x,_rotY, obj.transform.rotation.z);
                 }
 
                 if (Input.touchCount > 0)
