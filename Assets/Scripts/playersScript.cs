@@ -46,12 +46,10 @@ public class playersScript : MonoBehaviour
                 //CLAMP
                 foreach (GameObject obj in buttonManager.instance.guns)
                 {
-                    //float rotY = obj.transform.rotation.y;
-                    //float _rotY = Mathf.Clamp(rotY, 45, 135);
-                    //obj.transform.eulerAngles = new Vector3(obj.transform.rotation.x, _rotY, obj.transform.rotation.z);
+                    float rotY = obj.transform.eulerAngles.y;
+                    float _rotY = Mathf.Clamp(rotY, 45, 135);
+                    obj.transform.eulerAngles = new Vector3(obj.transform.eulerAngles.x, _rotY, obj.transform.eulerAngles.z);
 
-                    Vector3 rot = obj.transform.eulerAngles;
-                    rot.x = ClampAngle(rot.x, 45, 135);
                 }
 
                 if (Input.touchCount > 0)
@@ -73,13 +71,5 @@ public class playersScript : MonoBehaviour
                 }
             }
         }
-    }
-
-    float ClampAngle(float angle, float from, float to)
-    {
-        // accepts e.g. -80, 80
-        if (angle < 0f) angle = 360 + angle;
-        if (angle > 180f) return Mathf.Max(angle, 360 + from);
-        return Mathf.Min(angle, to);
     }
 }

@@ -13,6 +13,7 @@ public class GunScript : MonoBehaviour
     public float minFireRate;
     public float minBulletLifeTime;
     public static bulletManager bulletScript;
+    public float bulletRotStabilizer;
     //public static GunScript instance;
 
     private void Start()
@@ -31,9 +32,10 @@ public class GunScript : MonoBehaviour
             if (Time.timeScale > 0)
             {
                 //bullet yönü objenin ucuna bakmalı ona göre ayarlarsan velocityi de forward yerine baktığı yöne gönderirsen düzelir
-                GameObject bullet = Instantiate(bulletobject, transform.position, Quaternion.identity);
+                print(transform.parent.eulerAngles.y);
+                GameObject bullet = Instantiate(bulletobject, transform.position, Quaternion.Euler(0, transform.parent.eulerAngles.y -90, 0));
 
-                bullet.GetComponent<Rigidbody>().velocity = Vector3.forward * bulletSpeed;
+                bullet.GetComponent<Rigidbody>().velocity = new Vector3(0,0,1) * bulletSpeed;
 
                 bullet.transform.Rotate(0, 90, 0);
 
