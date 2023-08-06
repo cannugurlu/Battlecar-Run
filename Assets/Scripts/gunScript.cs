@@ -35,7 +35,7 @@ public class GunScript : MonoBehaviour
                 print(transform.parent.eulerAngles.y);
                 GameObject bullet = Instantiate(bulletobject, transform.position, Quaternion.Euler(0, transform.parent.eulerAngles.y -90, 0));
 
-                bullet.GetComponent<Rigidbody>().velocity = new Vector3(0,0,1) * bulletSpeed;
+                bullet.GetComponent<Rigidbody>().velocity = new Vector3(playersScript.instance.touchDeltaX,0,1)* bulletSpeed;
 
                 bullet.transform.Rotate(0, 90, 0);
 

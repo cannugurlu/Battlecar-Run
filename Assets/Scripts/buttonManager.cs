@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class buttonManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class buttonManager : MonoBehaviour
     public Vector3 camTargetPos, camTargetRot;
     public static float time;
     public List<GameObject> guns = new List<GameObject>();
+    public TextMeshProUGUI moneyValue;
 
     public static buttonManager instance;
 
@@ -29,6 +31,10 @@ public class buttonManager : MonoBehaviour
         camTargetPos = new Vector3(0, 6.55f, -3.93f);
         camTargetRot = new Vector3(35, 0, 0);
         gameManager = FindObjectOfType<gameManager>();
+    }
+    private void Update()
+    {
+        moneyValue.text = playersScript.money.ToString();
     }
 
     public void buyWeaponButton()

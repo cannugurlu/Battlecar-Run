@@ -9,15 +9,17 @@ using Microsoft.Win32.SafeHandles;
 public class boxManager : MonoBehaviour
 {
     GunScript gunScript;
-    Vector3 initialPos,hedefPos,hedefRot;
-    private GameObject box, hedef;
+    Vector3 initialPos,hedefPos,hedefRot,carPos;
+    private GameObject box, hedef,money;
     float canBari = 100.0f;
     private bool isTextureChanged=false;
     private bool isTargetMoved = false;
     public float velocity = 200.0f;
+    public float rotateVelocity = 45.0f;
     public float zAxis;
     private void Awake()
     {
+        money = gameObject.transform.GetChild(1).gameObject;
         box = this.gameObject;
         hedef=gameObject.transform.GetChild(0).gameObject;
     }
@@ -33,6 +35,10 @@ public class boxManager : MonoBehaviour
 
     private void Update()
     {
+        carPos = GameObject.Find("CAR").transform.position;
+
+        money.transform.Rotate(0, rotateVelocity * Time.deltaTime, 0);
+
         gameObject.GetComponentInChildren<TextMeshPro>().text = canBari.ToString();
 
         if (canBari < 50)
@@ -47,12 +53,25 @@ public class boxManager : MonoBehaviour
         {
             if (!isTargetMoved)
             {
+                earnMoneyAnim();
                 bantagit();
                 isTargetMoved = true;
             }
         }
     }
 
+    void earnMoneyAnim()
+    {
+        GameObject moneyObj = money;
+        money.transform.SetParent(null);
+
+        rotateVelocity *= 3;
+        moneyObj.transform.DOScale(0.25f, 0.4f);
+        moneyObj.transform.DOMoveX(carPos.x, 0.8f);
+        moneyObj.transform.DOMoveZ(carPos.z, 0.8f);
+        moneyObj.transform.DOMoveY(carPos.y + 2.0f, 0.3f).OnComplete(() =>
+        moneyObj.transform.DOMoveY(carPos.y, 0.3f));
+    }
     void bantagit()
     {
         GameObject targetObj = hedef;

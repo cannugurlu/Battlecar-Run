@@ -11,9 +11,11 @@ public class playersScript : MonoBehaviour
     [SerializeField] private float speed = 1f;
     [SerializeField] private float rotationSpeed = 3f;
     [SerializeField] private float ClampX = 2.5f;
+    public float touchDeltaX;
     private Touch touch;
     public static bool minigame = false;
     public static playersScript instance;
+    public static float money;
 
     private void Awake()
     {
@@ -65,11 +67,21 @@ public class playersScript : MonoBehaviour
                             if (touch.deltaPosition.x != 0)
                             {
                                 obj.transform.Rotate(Vector3.up * touch.deltaPosition.x * Time.deltaTime *rotationSpeed);
+                                touchDeltaX = touch.deltaPosition.x;
                             }
                         }
                     }
                 }
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "money")
+        {
+            money += 50;
+            Destroy(other.gameObject);
         }
     }
 }
