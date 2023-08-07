@@ -8,7 +8,6 @@ public class DragAndDrop : MonoBehaviour
     gameManager gameManager;
     private Vector3 initialPosition;
     private float dragOffset = 1.35f;
-    Vector3 offset;
 
     void Start() 
     {
@@ -19,56 +18,48 @@ public class DragAndDrop : MonoBehaviour
     void OnMouseDown()
     {
         initialPosition = transform.position;
-        offset = transform.position - MouseWorldPosition();
         transform.GetComponent<Collider>().enabled = false;
     }
- 
     void OnMouseDrag()
     {
-        transform.position = MouseWorldPosition() + offset + new Vector3(0, dragOffset, 0);
+        transform.position = MouseWorldPosition() + new Vector3(0, dragOffset, 0);
     }
  
     void OnMouseUp()
     {
-        Vector3 objeBoyutu = new Vector3(0.35f, 7, 0.35f);
-        Collider[] colliders = Physics.OverlapBox(transform.position, objeBoyutu / 2);
+        var rayOrigin = Camera.main.transform.position;
+        var rayDirection = MouseWorldPosition1() - Camera.main.transform.position;
+
         bool droppedOnSlot = false;
 
-        foreach (Collider collider in colliders)
+        if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hitInfo))
         {
-            if (collider.CompareTag("Silah") && collider.gameObject != gameObject)
+            Debug.Log(hitInfo.transform.gameObject.name);
+            if (hitInfo.transform.CompareTag("Silah"))
             {
-                GunScript otherGunScript = collider.gameObject.GetComponent<GunScript>();
+                GunScript otherGunScript = hitInfo.transform.GetComponent<GunScript>();
 
                 if (otherGunScript != null && otherGunScript.gunLevel == gunScript.gunLevel)
                 {
                     Quaternion newRotation = gameManager.GunPrefabs[gunScript.gunLevel + 1].transform.rotation;
-                    GameObject newObject = Instantiate(gameManager.GunPrefabs[gunScript.gunLevel + 1], collider.gameObject.transform.position, newRotation);
-                    newObject.transform.parent = collider.gameObject.transform.parent;
+                    GameObject newObject = Instantiate(gameManager.GunPrefabs[gunScript.gunLevel + 1], hitInfo.transform.position, newRotation);
+                    newObject.transform.parent = hitInfo.transform.parent;
                     Destroy(gameObject);
-                    Destroy(collider.gameObject);
+                    Destroy(hitInfo.transform.gameObject);
                     droppedOnSlot = true;
-                    break;
                 }
             }
-        }
-
-        if (!droppedOnSlot)
-        {
-            foreach (Collider collider in colliders)
+            else if (hitInfo.transform.CompareTag("Slot"))
             {
-                if (collider.CompareTag("Slot") && collider.gameObject != gameObject)
-                {
-                    SlotScript slotScript = collider.gameObject.GetComponent<SlotScript>();
+                SlotScript slotScript = hitInfo.transform.gameObject.GetComponent<SlotScript>();
 
-                    if (slotScript != null && !slotScript.is_filled)
-                    {
-                        Vector3 newPosition = new Vector3(collider.gameObject.transform.position.x, collider.gameObject.transform.position.y + 0.5f, collider.gameObject.transform.position.z);
-                        transform.position = newPosition;
-                        transform.parent = collider.gameObject.transform;
-                        
-                        droppedOnSlot = true;
-                    }
+                if (slotScript != null && !slotScript.is_filled)
+                {
+                    Vector3 newPosition = new Vector3(hitInfo.transform.position.x, hitInfo.transform.position.y + 0.5f, hitInfo.transform.position.z);
+                    transform.position = newPosition;
+                    transform.parent = hitInfo.transform;
+                    
+                    droppedOnSlot = true;
                 }
             }
         }
@@ -92,13 +83,14 @@ public class DragAndDrop : MonoBehaviour
         return new Vector3 (WorldPosition.x, 1f , WorldPosition.z);
     }
 
-    /* private void OnDrawGizmos()
+    Vector3 MouseWorldPosition1()
     {
-        if (gameObject != null)
-        {
-            Vector3 objeBoyutu = new Vector3(0.35f, 7, 0.35f);
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position, objeBoyutu);
-        }
-    } */
+        var mouseScreenPos = Input.mousePosition; 
+        mouseScreenPos.x = Input.mousePosition.x;
+        mouseScreenPos.y = Input.mousePosition.y;
+        mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        return new Vector3(worldPosition.x, worldPosition.y, transform.position.z);
+    }
+
 }
