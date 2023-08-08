@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,10 +15,12 @@ public class gateController : MonoBehaviour
     private bool isCarChanged = false;
     public Material blueMaterial;
     GunScript[] gunScript;
+    Vector3 initialScale;
 
 
     void Start()
     {
+        initialScale = transform.localScale;
         gunScript = Object.FindObjectsOfType<GunScript>();
         gateGood = gameObject.transform.Find("GateGood").gameObject;
         gateBad = gameObject.transform.Find("GateBad").gameObject;
@@ -49,6 +52,8 @@ public class gateController : MonoBehaviour
         }
         if(other.gameObject.tag == "bullet")
         {
+            print("fag");
+            gateScaler();
             foreach (GunScript g in gunScript)
             {
                 gateNumber += g.damagetogate;
@@ -59,6 +64,12 @@ public class gateController : MonoBehaviour
         }
     }
 
+    void gateScaler()
+    {
+        gameObject.transform.localScale = initialScale;
+        gameObject.transform.DOScale(initialScale * 1.1f, 0.12f).OnComplete(() =>
+        gameObject.transform.DOScale(initialScale, 0.12f));
+    }
     void gateCustomizer()
     {
         if (gateNumber >= 0) isPos = true;

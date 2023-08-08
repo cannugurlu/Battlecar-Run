@@ -15,7 +15,7 @@ public class playersScript : MonoBehaviour
     private Touch touch;
     public static bool minigame = false;
     public static playersScript instance;
-    public static float money;
+    public static float money=50.0f;
 
     private void Awake()
     {
