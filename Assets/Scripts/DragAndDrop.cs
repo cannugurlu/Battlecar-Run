@@ -34,7 +34,6 @@ public class DragAndDrop : MonoBehaviour
 
         if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hitInfo))
         {
-            Debug.Log(hitInfo.transform.gameObject.name);
             if (hitInfo.transform.CompareTag("Silah"))
             {
                 GunScript otherGunScript = hitInfo.transform.GetComponent<GunScript>();

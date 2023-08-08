@@ -60,8 +60,8 @@ public class buttonManager : MonoBehaviour
         Time.timeScale = 1;
         startButton.SetActive(false);
         buyButton.SetActive(false);
-        moneyButton.SetActive(false);
         cameraMove(camTargetPos, camTargetRot);
+        carSlots.SetParent(GameObject.Find("CAR").transform);
 
         //Araba silahları listesi set edilir.
         foreach (Transform slot in carSlots)

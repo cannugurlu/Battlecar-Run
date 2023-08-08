@@ -60,7 +60,6 @@ public class playersScript : MonoBehaviour
 
                     if (touch.phase == TouchPhase.Moved)
                     {
-                        Debug.Log(buttonManager.instance.guns.Count);
                         //ROTATE
                         foreach (GameObject obj in buttonManager.instance.guns)
                         {
