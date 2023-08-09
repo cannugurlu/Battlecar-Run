@@ -260,7 +260,6 @@ GameObject:
   - component: {fileID: 4640430903546998356}
   - component: {fileID: 6279919332530729806}
   - component: {fileID: 6729657528047402252}
-  - component: {fileID: 252550183834849977}
   m_Layer: 0
   m_Name: Uzi
   m_TagString: Silah
@@ -325,27 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30acfbcd55a07f94e8a1a39006ba82c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &252550183834849977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2451971987737062810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb7b8b2194760424484a6bcac5e79919, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   gunLevel: 1
-  bulletobject: {fileID: 0}
-  bulletSpeed: 0
-  bulletLifeTime: 1
-  fireRate: 1
-  damageetobox: 0
-  damagetogate: 0
-  minFireRate: 0
-  minBulletLifeTime: 0
 --- !u!1 &2685938319332844824
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,55 +778,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.88522005
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8852198
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.77965474
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.49
+      value: -2.155
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37
+      value: 0.303
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.06
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710677
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.70710677
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738866494407205089, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
-    GunScript gunScript;
+    public int gunLevel;
     gameManager gameManager;
     private Vector3 initialPosition;
     private float dragOffset = 1.35f;
@@ -12,7 +12,6 @@ public class DragAndDrop : MonoBehaviour
     void Start() 
     {
         gameManager = FindObjectOfType<gameManager>();
-        gunScript = GetComponent<GunScript>();
     }
  
     void OnMouseDown()
@@ -36,12 +35,12 @@ public class DragAndDrop : MonoBehaviour
         {
             if (hitInfo.transform.CompareTag("Silah"))
             {
-                GunScript otherGunScript = hitInfo.transform.GetComponent<GunScript>();
+                DragAndDrop otherDragScript = hitInfo.transform.GetComponent<DragAndDrop>();
 
-                if (otherGunScript != null && otherGunScript.gunLevel == gunScript.gunLevel)
+                if (otherDragScript != null && otherDragScript.gunLevel == gunLevel)
                 {
-                    Quaternion newRotation = gameManager.GunPrefabs[gunScript.gunLevel + 1].transform.rotation;
-                    GameObject newObject = Instantiate(gameManager.GunPrefabs[gunScript.gunLevel + 1], hitInfo.transform.position, newRotation);
+                    Quaternion newRotation = gameManager.GunPrefabs[gunLevel + 1].transform.rotation;
+                    GameObject newObject = Instantiate(gameManager.GunPrefabs[gunLevel + 1], hitInfo.transform.position, newRotation);
                     newObject.transform.parent = hitInfo.transform.parent;
                     Destroy(gameObject);
                     Destroy(hitInfo.transform.gameObject);

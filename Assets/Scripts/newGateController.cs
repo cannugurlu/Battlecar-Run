@@ -11,18 +11,18 @@ public class newGateController : MonoBehaviour
     public int effectiveNumber;
     GameObject[] childsofGate;
     UnityEngine.Color hedefRenk;
-    private float gecenSure = 0f;
-    private bool renkDegisti = false;
+    //private float gecenSure = 0f;
+    //private bool renkDegisti = false;
     public float sure = 1f;
-    float transparency = 1f; 
-    float duration = 0.5f;
-    int randomVariable;
-    bool isCoroutineRunning = false;
-    bool isCoroutineDone = false;
-    bool shouldStart=false;
-    float zamanSayaci = 0.0f;
-    float deltaFireRate, deltaLifeTime;
-    bool isChanging = false;
+    //float transparency = 1f; 
+    //float duration = 0.5f;
+    //int randomVariable;
+    //private bool isCoroutineRunning = false;
+    //private bool isCoroutineDone = false;
+    //private bool shouldStart = false;
+    //float zamanSayaci = 0.0f;
+    //float deltaFireRate, deltaLifeTime;
+    //bool isChanging = false;
     GunScript gunScript;
 
     private void Awake()
@@ -60,11 +60,11 @@ public class newGateController : MonoBehaviour
     //    {
     //        Destroy(other.gameObject);
     //        effectiveNumber+=10;
-    //        if (randomVariable == 0) // atýþ hýzý
+    //        if (randomVariable == 0) // atï¿½ï¿½ hï¿½zï¿½
     //        {
     //            if (effectiveNumber < 0)
     //            {
-    //                GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n" + effectiveNumber.ToString();
+    //                GetComponentInChildren<TextMeshPro>().text = "Atï¿½ï¿½ Hï¿½zï¿½\n" + effectiveNumber.ToString();
     //            }
     //            else if (effectiveNumber == 0)
     //            {
@@ -72,7 +72,7 @@ public class newGateController : MonoBehaviour
     //            }
     //            else
     //            {
-    //                GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n+" + effectiveNumber.ToString();
+    //                GetComponentInChildren<TextMeshPro>().text = "Atï¿½ï¿½ Hï¿½zï¿½\n+" + effectiveNumber.ToString();
     //            }
     //            if (shouldStart)
     //            {
@@ -125,16 +125,16 @@ public class newGateController : MonoBehaviour
     //void gateCustomizer()
     //{
     //    effectiveNumber=Random.Range(1, 3)*100;
-    //    if (randomVariable == 0) // atýþ hýzý
+    //    if (randomVariable == 0) // atï¿½ï¿½ hï¿½zï¿½
     //    {
     //        if (gameObject.tag == "GateGood")
     //        {
-    //            GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n +" + effectiveNumber.ToString();
+    //            GetComponentInChildren<TextMeshPro>().text = "Atï¿½ï¿½ Hï¿½zï¿½\n +" + effectiveNumber.ToString();
     //        }
     //        else if (gameObject.tag == "GateBad")
     //        {
     //            effectiveNumber = -effectiveNumber;
-    //            GetComponentInChildren<TextMeshPro>().text = "Atýþ Hýzý\n " + effectiveNumber.ToString();
+    //            GetComponentInChildren<TextMeshPro>().text = "Atï¿½ï¿½ Hï¿½zï¿½\n " + effectiveNumber.ToString();
     //        }
     //    }
     //    else if(randomVariable == 1) // menzil
@@ -168,7 +168,7 @@ public class newGateController : MonoBehaviour
     //        {
     //            gunScript.bulletLifeTime = gunScript.minBulletLifeTime;
     //        }
-    //        print("menzil çýkarýldý");
+    //        print("menzil ï¿½ï¿½karï¿½ldï¿½");
     //    }
     //    isChanging =false;
     //}
@@ -188,7 +188,7 @@ public class newGateController : MonoBehaviour
     //        {
     //            gunScript.fireRate = gunScript.minFireRate;
     //        }
-    //        print("Rate çýkarýldý");
+    //        print("Rate ï¿½ï¿½karï¿½ldï¿½");
     //    }
     //    isChanging = false;
     //}
@@ -233,18 +233,18 @@ public class newGateController : MonoBehaviour
 
 
 
-        IEnumerator redtogreen()
+        /* IEnumerator redtogreen()
         {
             print("calisti");
             isCoroutineRunning = true;
-            // Her frame'de renkleri güncelle
+            // Her frame'de renkleri gï¿½ncelle
             for (int i = 0; i < childsofGate.Length; i++)
             {
                 print("1. for");
                 Renderer renderer = childsofGate[i].GetComponent<Renderer>();
                 if (renderer != null)
                 {
-                    // Renk geçiþini saðla
+                    // Renk geï¿½iï¿½ini saï¿½la
                     renderer.material.color = UnityEngine.Color.Lerp(renderer.material.color, hedefRenk, 1);
                     print("if");
                 }
@@ -253,7 +253,7 @@ public class newGateController : MonoBehaviour
             isCoroutineRunning = false;
             isCoroutineDone = true;
             yield return null;
-        }
+        } */
 
 
     //IEnumerator redtogreen(GameObject parentObject, float duration)

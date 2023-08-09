@@ -12,7 +12,7 @@ public class gateController : MonoBehaviour
     private bool isPos;
     public bool isRange;
     private bool isGateDeleted=false;
-    private bool isCarChanged = false;
+    //private bool isCarChanged = false;
     public Material blueMaterial;
     GunScript[] gunScript;
     Vector3 initialScale;
@@ -52,7 +52,6 @@ public class gateController : MonoBehaviour
         }
         if(other.gameObject.tag == "bullet")
         {
-            print("fag");
             gateScaler();
             foreach (GunScript g in gunScript)
             {

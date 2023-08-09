@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3596797043564802348}
   - component: {fileID: 6646885679508067623}
   - component: {fileID: 1858935725007353012}
-  - component: {fileID: 7257081997240555945}
   m_Layer: 0
   m_Name: Assault
   m_TagString: Silah
@@ -72,27 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30acfbcd55a07f94e8a1a39006ba82c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7257081997240555945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385665025914508107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb7b8b2194760424484a6bcac5e79919, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   gunLevel: 3
-  bulletobject: {fileID: 0}
-  bulletSpeed: 0
-  bulletLifeTime: 1
-  fireRate: 1
-  damageetobox: 0
-  damagetogate: 0
-  minFireRate: 0
-  minBulletLifeTime: 0
 --- !u!1 &4276943496984196433
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,55 +430,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.68479294
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.68479276
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6031291
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.159
+      value: -1.916
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.37
+      value: 0.328
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710677
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.70710677
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 7175237819527808801, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7515118478072009134, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: fireRate
@@ -513,7 +492,8 @@ PrefabInstance:
       propertyPath: bulletLifeTime
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4744314787167000739, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

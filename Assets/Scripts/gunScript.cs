@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-    public int gunLevel;
     [SerializeField] GameObject bulletobject;
     [SerializeField] float bulletSpeed;
     public float bulletLifeTime=1; // menzil
@@ -14,7 +13,6 @@ public class GunScript : MonoBehaviour
     public float minBulletLifeTime;
     public static bulletManager bulletScript;
     public float bulletRotStabilizer;
-    //public static GunScript instance;
 
     private void Start()
     {
@@ -31,11 +29,9 @@ public class GunScript : MonoBehaviour
         {
             if (Time.timeScale > 0)
             {
-                GameObject bullet = Instantiate(bulletobject, transform.position, Quaternion.Euler(0, transform.parent.eulerAngles.y -90, 0));
+                GameObject bullet = Instantiate(bulletobject, transform.position, transform.rotation);
 
-                bullet.GetComponent<Rigidbody>().velocity = new Vector3(playersScript.instance.touchDeltaX,0,1)* bulletSpeed;
-
-                bullet.transform.Rotate(0, 90, 0);
+                bullet.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
 
                 bulletScript = bullet.GetComponent<bulletManager>();
 

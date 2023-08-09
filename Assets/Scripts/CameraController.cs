@@ -11,10 +11,10 @@ public class cameraController : MonoBehaviour
     public Transform playerTransform;
     private Vector3 offset,camsRot;
     Vector3 target;
-    private float rotateTime=0.3f;
+    private float rotateTime = 0.3f;
     public float cameraSpeed;
     public float cameraSmoothSpeed;
-    private float camRotX = 35;
+    //private float camRotX = 35;
     public static bool cameraFollow = false;
     bool isCamRotated = false;
 
@@ -51,9 +51,6 @@ public class cameraController : MonoBehaviour
 
                 transform.position = newPosition;
 
-
-
-
                 if(transform.eulerAngles.x != 35)
                 {
                     if (!isCamRotated)
@@ -78,7 +75,6 @@ public class cameraController : MonoBehaviour
                 newPosition = Vector3.Lerp(transform.position, newPosition, cameraSpeed);
 
                 transform.position = newPosition;
-
 
                 if (transform.eulerAngles.x != 60)
                 {
