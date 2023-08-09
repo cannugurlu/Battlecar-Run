@@ -9,7 +9,6 @@ public class buttonManager : MonoBehaviour
     private GameObject Cam;
     public GameObject startButton;
     public GameObject buyButton;
-    public GameObject moneyButton;
     gameManager gameManager;
     private List<GameObject> SlotList = new List<GameObject>();
     public Transform startSlots;
@@ -18,6 +17,8 @@ public class buttonManager : MonoBehaviour
     public static float time;
     public List<GameObject> guns = new List<GameObject>();
     public TextMeshProUGUI moneyValue;
+    public TextMeshProUGUI buyValue;
+    public static float buyMoney = 50.0f;
 
     public static buttonManager instance;
 
@@ -34,24 +35,30 @@ public class buttonManager : MonoBehaviour
     private void Update()
     {
         moneyValue.text = playersScript.money.ToString();
+        buyValue.text = buyMoney.ToString();
     }
 
     public void buyWeaponButton()
     {
-        foreach (Transform slot in startSlots)
+        if (playersScript.money >= buyMoney)
         {
-            SlotList.Add(slot.gameObject);
-        }
-        foreach (GameObject slot in SlotList)
-        {
-            SlotScript slotScript = slot.GetComponent<SlotScript>();
-            if (!slotScript.IsFilled())
+            foreach (Transform slot in startSlots)
             {
-                Vector3 newPosition = new Vector3(slot.transform.position.x, slot.transform.position.y + 0.5f, slot.transform.position.z);
-                Quaternion newRotation = gameManager.GunPrefabs[0].transform.rotation;
-                Instantiate(gameManager.GunPrefabs[0], newPosition, newRotation, slot.transform);
-                break;
+                SlotList.Add(slot.gameObject);
             }
+            foreach (GameObject slot in SlotList)
+            {
+                SlotScript slotScript = slot.GetComponent<SlotScript>();
+                if (!slotScript.IsFilled())
+                {
+                    Vector3 newPosition = new Vector3(slot.transform.position.x, slot.transform.position.y + 0.5f, slot.transform.position.z);
+                    Quaternion newRotation = gameManager.GunPrefabs[0].transform.rotation;
+                    Instantiate(gameManager.GunPrefabs[0], newPosition, newRotation, slot.transform);
+                    break;
+                }
+            }
+            playersScript.money -= buyMoney;
+            buyMoney += 10;
         }
     }
 
@@ -66,6 +73,12 @@ public class buttonManager : MonoBehaviour
         //Araba silahları listesi set edilir.
         foreach (Transform slot in carSlots)
         {
+            if (slot.gameObject.TryGetComponent(out Renderer slotRenderer))
+            {
+                Material material = slotRenderer.material;
+                material.DOFade(0f, 0.5f);
+            }
+
             if (slot.childCount > 0)
             {
                 guns.Add(slot.GetChild(0).gameObject);
@@ -101,9 +114,7 @@ public class buttonManager : MonoBehaviour
             if(slot.childCount != 0)
             {
                 Transform gun = slot.GetChild(0);
-                gun.SetParent(null);
                 gun.DORotate(new Vector3(0, 90, 0), 0.5f);
-                gun.SetParent(GameObject.Find("CAR").transform);
             }
         }
     }

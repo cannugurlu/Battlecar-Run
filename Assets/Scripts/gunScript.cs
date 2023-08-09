@@ -30,11 +30,9 @@ public class GunScript : MonoBehaviour
             if (Time.timeScale > 0)
             {
                 GameObject bullet = Instantiate(bulletobject, transform.position, transform.rotation);
-
-                bullet.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+                bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
 
                 bulletScript = bullet.GetComponent<bulletManager>();
-
                 bulletScript.bulletDamagetoBox = damageetobox;
 
                 Destroy(bullet, bulletLifeTime);

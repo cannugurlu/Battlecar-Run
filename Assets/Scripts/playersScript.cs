@@ -11,11 +11,11 @@ public class playersScript : MonoBehaviour
     [SerializeField] private float speed = 1f;
     [SerializeField] private float rotationSpeed = 3f;
     [SerializeField] private float ClampX = 2.5f;
-    public float touchDeltaX;
     private Touch touch;
     public static bool minigame = false;
+    public static bool minigameFinished = false;
     public static playersScript instance;
-    public static float money=50.0f;
+    public static float money = 50.0f;
 
     private void Awake()
     {
@@ -42,6 +42,14 @@ public class playersScript : MonoBehaviour
                         transform.position = new Vector3(transform.position.x + touch.deltaPosition.x * speed, transform.position.y, transform.position.z);
                     }
                 }
+
+                if (minigameFinished)
+                {
+                    foreach (GameObject obj in buttonManager.instance.guns)
+                    {
+                        obj.transform.DORotate(new Vector3(0, 90, 0), 0.5f);
+                    }
+                }
             }
             else
             {
@@ -65,8 +73,7 @@ public class playersScript : MonoBehaviour
                         {
                             if (touch.deltaPosition.x != 0)
                             {
-                                obj.transform.Rotate(Vector3.up * touch.deltaPosition.x * Time.deltaTime *rotationSpeed);
-                                touchDeltaX = touch.deltaPosition.x;
+                                obj.transform.Rotate(Vector3.up * touch.deltaPosition.x * Time.deltaTime * rotationSpeed);
                             }
                         }
                     }
