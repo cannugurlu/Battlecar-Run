@@ -9,9 +9,10 @@ public class GameManager : MonoBehaviour
     GameObject car, platform;
     float XClamp,clampedValue;
     public GameObject[] GunPrefabs;
-    [SerializeField] private TextMeshProUGUI scoreValue;
-    [SerializeField] private GameObject endPanel;
+    public TextMeshProUGUI scoreValue;
+    public GameObject endPanel;
     public static int level = 1;
+
     void Awake()
     {
         Time.timeScale = 0.0f;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 car.transform.position = FindObjectOfType<playersScript>().initialPosition;
-                RestartGame();
+                FindObjectOfType<buttonManager>().RestartGame();
             }
         }
     }
@@ -50,15 +51,5 @@ public class GameManager : MonoBehaviour
         {
             level++;
         }
-    }
-
-    public void RestartGame()
-    {
-        playersScript.gameFinished = false;
-        endPanel.SetActive(false);
-        buttonManager buttonManager = FindObjectOfType<buttonManager>(); 
-        buttonManager.moneyValue.gameObject.SetActive(true);
-        buttonManager.startButton.SetActive(true);
-        buttonManager.buyButton.SetActive(true);
     }
 }
