@@ -15,7 +15,7 @@ public class gateController : MonoBehaviour
     private bool isGateDeleted = false;
     //private bool isCarChanged = false;
     public Material blueMaterial;
-    [SerializeField] new List<GunScript> gunScriptsList= new List<GunScript>();
+    [SerializeField] List<GunScript> gunScriptsList= new List<GunScript>();
     public Transform carSlots;
     Vector3 initialScale;
     int controllerNumber = 0;
