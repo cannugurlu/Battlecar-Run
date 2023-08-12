@@ -7,14 +7,49 @@ public class minigameController : MonoBehaviour
 {
     private int numberoftargets = 0;
     private Vector3 targetPos;
+    private List<GameObject> readyTargets = new List<GameObject>();
+    private bool controllerBoolen = false;
     void Start()
     {
-        targetPos = new Vector3(-1.65f,0.01f,transform.position.z);
-        targetPos.z += 10;
+        targetPos = new Vector3(-1.9f,0.01f,transform.position.z);
+        targetPos.z += 15;
     }
     void Update()
     {
-        
+        if (controllerBoolen)
+        {
+            foreach(GameObject go in readyTargets)
+            {
+                go.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                numberoftargets++;
+
+                if (numberoftargets % 2 == 1)
+                {
+                    go.gameObject.transform.DOMove(targetPos, 0.25f * numberoftargets);
+
+                    go.gameObject.transform.DORotate(new Vector3(0, 145, 0), 0.25f * numberoftargets);
+
+                    go.gameObject.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.25f * numberoftargets);
+
+                }
+                else if (numberoftargets % 2 == 0)
+                {
+                    targetPos.x = -targetPos.x;
+                    go.gameObject.transform.DOMove(targetPos, 0.25f * numberoftargets);
+                    targetPos.x = -targetPos.x;
+
+                    go.gameObject.transform.DORotate(new Vector3(0, -145, 0), 0.25f * numberoftargets);
+
+                    go.gameObject.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.25f * numberoftargets);
+
+                    targetPos.z += 5.0f;
+                }
+            }
+
+
+
+            controllerBoolen = !controllerBoolen;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,34 +57,13 @@ public class minigameController : MonoBehaviour
         if (other.gameObject.tag == "target")
         {
             other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            numberoftargets++;
-
-            if (numberoftargets % 2 == 1)
-            {
-                other.gameObject.transform.DOMove(targetPos, 0.25f * numberoftargets);
-
-                other.gameObject.transform.DORotate(new Vector3(0,145,0), 0.25f * numberoftargets);
-
-                other.gameObject.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.25f * numberoftargets);
-
-            }
-            else if (numberoftargets % 2 == 0)
-            {
-                targetPos.x = -targetPos.x;
-                other.gameObject.transform.DOMove(targetPos, 0.25f * numberoftargets);
-                targetPos.x = -targetPos.x;
-
-                other.gameObject.transform.DORotate(new Vector3(0,-145,0), 0.25f * numberoftargets);
-
-                other.gameObject.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.25f*numberoftargets);
-
-                targetPos.z += 5.0f;
-            }
+            readyTargets.Add(other.gameObject);
         }
 
         if (other.gameObject.tag == "car")
         {
             playersScript.minigame = true;
+            controllerBoolen = true;
         }
     }
 

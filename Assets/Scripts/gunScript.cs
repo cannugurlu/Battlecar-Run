@@ -7,8 +7,8 @@ public class GunScript : MonoBehaviour
     [SerializeField] GameObject bulletobject;
     [SerializeField] float bulletSpeed;
     public float bulletLifeTime=1; // menzil
-    public float fireRate=1; // at�� s�kl���
-    public int damageetobox,damagetogate;
+    public float fireRate=1; // ates sikligi
+    public int damagetobox,damagetogate;
     public float minFireRate;
     public float minBulletLifeTime;
     public static bulletManager bulletScript;
@@ -30,10 +30,13 @@ public class GunScript : MonoBehaviour
             if (Time.timeScale > 0)
             {
                 GameObject bullet = Instantiate(bulletobject, transform.position, transform.rotation);
+                bullet.GetComponent<bulletManager>().bulletDamagetoBox = damagetobox;
+                bullet.GetComponent<bulletManager>().bulletDamagetoGate = damagetogate;
+
                 bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
 
                 bulletScript = bullet.GetComponent<bulletManager>();
-                bulletScript.bulletDamagetoBox = damageetobox;
+                bulletScript.bulletDamagetoBox = damagetobox;
 
                 Destroy(bullet, bulletLifeTime);
             }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class bulletManager : MonoBehaviour
 {
-    public float bulletDamagetoBox;
-
-
+    public int bulletDamagetoBox;
+    public int bulletDamagetoGate;
 }

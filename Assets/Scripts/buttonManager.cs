@@ -19,9 +19,8 @@ public class buttonManager : MonoBehaviour
     public TextMeshProUGUI moneyValue;
     public TextMeshProUGUI buyValue;
     public static float buyMoney = 50.0f;
-
     public static buttonManager instance;
-
+    public bool isGameStarted=false;
     void Awake() 
     {
         instance = this;

@@ -19,6 +19,7 @@ TagManager:
   - minigameController
   - target
   - money
+  - box
   layers:
   - Default
   - TransparentFX

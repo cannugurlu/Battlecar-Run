@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class gateController : MonoBehaviour
@@ -11,17 +12,18 @@ public class gateController : MonoBehaviour
     public int gateNumber;
     private bool isPos;
     public bool isRange;
-    private bool isGateDeleted=false;
+    private bool isGateDeleted = false;
     //private bool isCarChanged = false;
     public Material blueMaterial;
-    GunScript[] gunScript;
+    [SerializeField] new List<GunScript> gunScriptsList= new List<GunScript>();
+    public Transform carSlots;
     Vector3 initialScale;
+    int controllerNumber = 0;
 
 
     void Start()
     {
         initialScale = transform.localScale;
-        gunScript = Object.FindObjectsOfType<GunScript>();
         gateGood = gameObject.transform.Find("GateGood").gameObject;
         gateBad = gameObject.transform.Find("GateBad").gameObject;
     }
@@ -30,6 +32,17 @@ public class gateController : MonoBehaviour
         if(!isGateDeleted)
         {
             gateCustomizer();
+        }
+
+        if(Time.timeScale>0 && controllerNumber==0)
+        {
+            carSlots = GameObject.Find("CarSlots").transform;
+            foreach (GunScript script in carSlots.GetComponentsInChildren<GunScript>())
+            {
+                print("ilkfor");
+                gunScriptsList.Add(script);
+            }
+            controllerNumber++;
         }
     }
 
@@ -53,12 +66,7 @@ public class gateController : MonoBehaviour
         if(other.gameObject.tag == "bullet")
         {
             gateScaler();
-            foreach (GunScript g in gunScript)
-            {
-                gateNumber += g.damagetogate;
-                
-            }
-
+            gateNumber += other.gameObject.GetComponent<bulletManager>().bulletDamagetoGate;
             Destroy(other.gameObject);
         }
     }
@@ -106,14 +114,14 @@ public class gateController : MonoBehaviour
     {
         if(isRange)
         {
-            foreach (GunScript g in gunScript)
+            foreach (GunScript g in gunScriptsList)
             {
                 g.bulletLifeTime += gateNumber / 200.0f;
             }
         }
         else
         {
-            foreach (GunScript g in gunScript)
+            foreach (GunScript g in gunScriptsList)
             {
                 g.fireRate -= gateNumber / 200.0f;
             }

@@ -87,7 +87,14 @@ public class playersScript : MonoBehaviour
         if (other.gameObject.tag == "money")
         {
             money += 50;
+            print("para eklendi");
             Destroy(other.gameObject);
+        }
+
+        if(other.gameObject.tag =="target" || other.gameObject.tag == "box")
+        {
+            Time.timeScale = 0.0f;
+            // lose ekraný ayarlanacak
         }
     }
 }

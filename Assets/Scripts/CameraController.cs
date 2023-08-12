@@ -76,12 +76,12 @@ public class cameraController : MonoBehaviour
 
                 transform.position = newPosition;
 
-                if (transform.eulerAngles.x != 60)
+                if (transform.eulerAngles.x != 50)
                 {
                     if (!isCamRotated)
                     {
                         Vector3 targetRot = transform.eulerAngles;
-                        targetRot.x = 60;
+                        targetRot.x = 50;
                         transform.DORotate(targetRot, rotateTime);
                         isCamRotated = true;
                         Invoke(nameof(boolenChanger), rotateTime + 0.01f);

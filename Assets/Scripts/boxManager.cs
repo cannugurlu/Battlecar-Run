@@ -11,14 +11,17 @@ public class boxManager : MonoBehaviour
     GunScript gunScript;
     Vector3 initialPos,hedefPos,hedefRot,carPos;
     private GameObject box, hedef,money;
+    private TextMeshPro healthbar;
     float canBari = 100.0f;
     private bool isTextureChanged=false;
     private bool isTargetMoved = false;
     public float velocity = 200.0f;
     public float rotateVelocity = 45.0f;
     public float zAxis;
+    public static bool isAnimCompleted=false;
     private void Awake()
     {
+        healthbar = gameObject.transform.GetChild(2).gameObject.GetComponent<TextMeshPro>();
         money = gameObject.transform.GetChild(1).gameObject;
         box = this.gameObject;
         hedef=gameObject.transform.GetChild(0).gameObject;
@@ -30,6 +33,7 @@ public class boxManager : MonoBehaviour
         {
             canBari -= other.gameObject.GetComponent<bulletManager>().bulletDamagetoBox;
             Destroy(other.gameObject);
+            print("mermi deðdi");   
         }
     }
 
@@ -39,7 +43,7 @@ public class boxManager : MonoBehaviour
 
         money.transform.Rotate(0, rotateVelocity * Time.deltaTime, 0);
 
-        gameObject.GetComponentInChildren<TextMeshPro>().text = canBari.ToString();
+        healthbar.text = canBari.ToString();
 
         if (canBari < 50)
         {
@@ -53,8 +57,16 @@ public class boxManager : MonoBehaviour
         {
             if (!isTargetMoved)
             {
-                earnMoneyAnim();
-                bantagit();
+                if (GameObject.Find("minigameFinisher").transform.position.z < gameObject.transform.position.z)
+                {
+                    Destroy(box);
+                    earnMoneyAnim();
+                }
+                else
+                {
+                    earnMoneyAnim();
+                    bantagit();
+                }
                 isTargetMoved = true;
             }
         }
@@ -84,11 +96,12 @@ public class boxManager : MonoBehaviour
         targetObj.GetComponent<Rigidbody>().isKinematic = false;
         targetObj.transform.DORotate(hedefRot, 1).OnComplete(()=>
         targetObj.GetComponent<Rigidbody>().velocity=new Vector3(0,0,1)*3000*Time.deltaTime);
+        isAnimCompleted = true;
     }
 
     void boxTextureChange()
     {
-        gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        //gameObject.transform.GetChild(2).gameObject.SetActive(false);
         gameObject.transform.GetChild(3).gameObject.SetActive(true);
         isTextureChanged = true;
     }

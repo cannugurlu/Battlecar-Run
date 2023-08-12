@@ -205,12 +205,16 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8650950206699043389, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
+      propertyPath: damagetobox
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650950206699043389, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
       propertyPath: bulletobject
       value: 
       objectReference: {fileID: 6582889551328527052, guid: 4f1b20db66b8b744b838e0b5b40e3647, type: 3}
     - target: {fileID: 8650950206699043389, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
       propertyPath: damageetobox
-      value: 100
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8650950206699043389, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
       propertyPath: ShootingPoint
