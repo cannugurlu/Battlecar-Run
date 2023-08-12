@@ -39,7 +39,6 @@ public class gateController : MonoBehaviour
             carSlots = GameObject.Find("CarSlots").transform;
             foreach (GunScript script in carSlots.GetComponentsInChildren<GunScript>())
             {
-                print("ilkfor");
                 gunScriptsList.Add(script);
             }
             controllerNumber++;

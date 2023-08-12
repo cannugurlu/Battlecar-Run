@@ -5,13 +5,13 @@ using UnityEngine;
 public class DragAndDrop : MonoBehaviour
 {
     public int gunLevel;
-    gameManager gameManager;
+    GameManager gameManager;
     private Vector3 initialPosition;
     private float dragOffset = 1.35f;
 
     void Start() 
     {
-        gameManager = FindObjectOfType<gameManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
  
     void OnMouseDown()

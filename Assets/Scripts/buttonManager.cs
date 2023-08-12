@@ -9,7 +9,7 @@ public class buttonManager : MonoBehaviour
     private GameObject Cam;
     public GameObject startButton;
     public GameObject buyButton;
-    gameManager gameManager;
+    GameManager gameManager;
     private List<GameObject> SlotList = new List<GameObject>();
     public Transform startSlots;
     public Transform carSlots;
@@ -20,7 +20,6 @@ public class buttonManager : MonoBehaviour
     public TextMeshProUGUI buyValue;
     public static float buyMoney = 50.0f;
     public static buttonManager instance;
-    public bool isGameStarted=false;
     void Awake() 
     {
         instance = this;
@@ -29,7 +28,7 @@ public class buttonManager : MonoBehaviour
         time = 0.7f;
         camTargetPos = new Vector3(0, 6.55f, -3.93f);
         camTargetRot = new Vector3(35, 0, 0);
-        gameManager = FindObjectOfType<gameManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
     private void Update()
     {

@@ -33,7 +33,6 @@ public class boxManager : MonoBehaviour
         {
             canBari -= other.gameObject.GetComponent<bulletManager>().bulletDamagetoBox;
             Destroy(other.gameObject);
-            print("mermi deðdi");   
         }
     }
 

@@ -14,20 +14,26 @@ public class playersScript : MonoBehaviour
     private Touch touch;
     public static bool minigame = false;
     public static bool minigameFinished = false;
+    public static bool gameFinished = false;
     public static playersScript instance;
     public static float money = 50.0f;
+    public Vector3 initialPosition;
 
     private void Awake()
     {
         instance = this;
         rb = GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, 1) * velocity * Time.deltaTime;
+        initialPosition = transform.position;
     }
     
     void Update()
     {
         if (cameraController.cameraFollow)
         {
+            if (gameFinished)
+                return;
+                
             if (!minigame)
             {
                 float x = transform.position.x;
@@ -87,14 +93,13 @@ public class playersScript : MonoBehaviour
         if (other.gameObject.tag == "money")
         {
             money += 50;
-            print("para eklendi");
             Destroy(other.gameObject);
         }
 
         if(other.gameObject.tag =="target" || other.gameObject.tag == "box")
         {
             Time.timeScale = 0.0f;
-            // lose ekraný ayarlanacak
+            FindObjectOfType<GameManager>().Ended();
         }
     }
 }
