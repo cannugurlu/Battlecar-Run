@@ -750,11 +750,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1361265416134841208, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: fireRate
-      value: 0.2
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1361265416134841208, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: bulletSpeed
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361265416134841208, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
+      propertyPath: damagetobox
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361265416134841208, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
+      propertyPath: damagetogate
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1361265416134841208, guid: ea6ad48b2c87ed5479f8cc93ee565fd8, type: 3}
       propertyPath: bulletLifeTime

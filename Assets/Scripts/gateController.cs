@@ -126,7 +126,7 @@ public class gateController : MonoBehaviour
         {
             foreach (GunScript g in gunScriptsList)
             {
-                g.fireRate -= gateNumber / 200.0f;
+                g.fireRate -= gateNumber / 600.0f;
             }
         }
     }

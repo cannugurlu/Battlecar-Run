@@ -403,6 +403,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8270798571557810171, guid: 26834f88d517ff44087a7bb0dcbee4fd, type: 3}
+      propertyPath: damagetobox
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270798571557810171, guid: 26834f88d517ff44087a7bb0dcbee4fd, type: 3}
       propertyPath: damageetobox
       value: 10
       objectReference: {fileID: 0}

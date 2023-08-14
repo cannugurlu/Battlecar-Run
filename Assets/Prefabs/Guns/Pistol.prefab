@@ -217,6 +217,10 @@ PrefabInstance:
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8650950206699043389, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
+      propertyPath: damagetogate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650950206699043389, guid: 4a19448e4d9faa1458535c6fd7b5219b, type: 3}
       propertyPath: ShootingPoint
       value: 
       objectReference: {fileID: 8996310322183855422}
