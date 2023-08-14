@@ -7,11 +7,18 @@ public class minigameController : MonoBehaviour
 {
     private int numberoftargets = 0;
     private Vector3 targetPos;
-    private List<GameObject> readyTargets = new List<GameObject>();
+    public List<GameObject> readyTargets = new List<GameObject>();
     private bool controllerBoolen = false;
+
+    public static minigameController instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
-        targetPos = new Vector3(-1.9f,0.01f,transform.position.z);
+        targetPos = new Vector3(-2.25f,0.01f,transform.position.z);
         targetPos.z += 15;
     }
     void Update()

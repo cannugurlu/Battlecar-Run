@@ -88,8 +88,12 @@ public class targetManager : MonoBehaviour
 
         GameObject moneyObj = Instantiate(moneyPrefab, gameObject.transform.position, Quaternion.identity);
         moneyObj.transform.DOScale(0.25f, 0.4f);
-        moneyObj.transform.DOMoveX(carPos.x, 0.8f);
-        moneyObj.transform.DOMoveZ(carPos.z, 0.8f);
+        moneyObj.transform.DOMoveX(carPos.x, 0.65f).OnComplete(() =>
+        {
+            playersScript.money += 50;
+            Destroy(moneyObj);
+        }); ;
+        moneyObj.transform.DOMoveZ(carPos.z+1.5f, 0.65f);
         moneyObj.transform.DOMoveY(carPos.y + 2.0f, 0.3f).OnComplete(() =>
         moneyObj.transform.DOMoveY(carPos.y, 0.3f));
     }

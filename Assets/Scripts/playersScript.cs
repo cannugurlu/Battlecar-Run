@@ -18,6 +18,10 @@ public class playersScript : MonoBehaviour
     public static playersScript instance;
     public static float money = 50.0f;
     public Vector3 initialPosition;
+    public static bool isGameWin = false;
+    bool isKnockedBack = false;
+    [SerializeField] float knockbackDuration = 0.75f;
+    [SerializeField] float knockbackDistance = 2.5f;
 
     private void Awake()
     {
@@ -96,10 +100,42 @@ public class playersScript : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-        if(other.gameObject.tag =="target" || other.gameObject.tag == "box")
+        if(other.gameObject.tag == "box")
         {
             Time.timeScale = 0.0f;
             FindObjectOfType<GameManager>().Ended();
         }
+
+        if (other.gameObject.tag == "FinishLine")
+        {
+            isGameWin = true;
+        }
+
+        if (other.CompareTag("target") && !isKnockedBack && minigame)
+        {
+            Vector3 geriTirmeYonu = new Vector3(0,0,-1);
+            StartCoroutine(KnockbackCoroutine());
+        }
+    }
+
+    private IEnumerator KnockbackCoroutine()
+    {
+        isKnockedBack = true;
+
+        Vector3 knockbackStartPosition = transform.position;
+        Vector3 knockbackTargetPosition = knockbackStartPosition - transform.forward * knockbackDistance;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < knockbackDuration)
+        {
+            float t = elapsedTime / knockbackDuration;
+            transform.position = Vector3.Lerp(knockbackStartPosition, knockbackTargetPosition, t);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        isKnockedBack = false;
     }
 }

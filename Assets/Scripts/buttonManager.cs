@@ -22,6 +22,9 @@ public class buttonManager : MonoBehaviour
     public static buttonManager instance;
     private Vector3 camTargetPos_1;
     private Vector3 camTargetRot_1;
+    public float initialMoney;
+    public GameObject LoseEndPanel;
+    public GameObject WinEndPanel;
     void Awake() 
     {
         instance = this;
@@ -65,10 +68,13 @@ public class buttonManager : MonoBehaviour
     public void startLevelButton()
     {
         Time.timeScale = 1;
+        initialMoney = playersScript.money;
         startButton.SetActive(false);
         buyButton.SetActive(false);
         cameraMove(camTargetPos, camTargetRot);
         carSlots.SetParent(GameObject.Find("CAR").transform);
+
+        StartCoroutine(cameraController.instace.EnableCameraFollow());
 
         //Araba silahları listesi set edilir.
         foreach (Transform slot in carSlots)
@@ -121,14 +127,49 @@ public class buttonManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Destroy(GameObject.FindWithTag("levelPrefab"));
+
+        foreach (GameObject target in minigameController.instance.readyTargets)
+        {
+            Destroy(target);
+        }
+
+        guns.Clear();
+
+        if (playersScript.isGameWin)
+        {
+            WinEndPanel.SetActive(false);
+            GameManager.level++;
+            print(GameManager.level);
+
+            Instantiate(GameManager.instance.levelPrefabs[GameManager.level-1],GameObject.Find("startPos").transform.position, Quaternion.identity);
+        }
+        else
+        {
+            LoseEndPanel.SetActive(false);
+
+            Instantiate(GameManager.instance.levelPrefabs[GameManager.level - 1], GameObject.Find("startPos").transform.position, Quaternion.identity);
+        }
+
+        foreach (GunScript g in gateController.instance.gunScriptsList)
+        {
+            g.bulletLifeTime = g.initialBulletLifeTime;
+            g.fireRate= g.initialFireRate;
+        }
+
+
+        playersScript.minigame = false;
+        playersScript.isGameWin = false;
         playersScript.gameFinished = false;
-        gameManager.endPanel.SetActive(false);
+
         moneyValue.gameObject.SetActive(true);
         startButton.SetActive(true);
         buyButton.SetActive(true);
         carSlots.SetParent(null);
 
         //Kamera Yeri Düzeltilmeli 
+        StopCoroutine(cameraController.instace.EnableCameraFollow());
+        cameraController.cameraFollow = false;
         camTargetPos_1 = new Vector3(0, 10, -2.4f);
         camTargetRot_1 = new Vector3(85, 0, 0);
         cameraMove(camTargetPos_1, camTargetRot_1);

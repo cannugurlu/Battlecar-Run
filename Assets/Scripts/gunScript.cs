@@ -13,10 +13,14 @@ public class GunScript : MonoBehaviour
     public float minBulletLifeTime;
     public static bulletManager bulletScript;
     public float bulletRotStabilizer;
+    public float initialFireRate;
+    public float initialBulletLifeTime;
 
     private void Start()
     {
         StartAtesEt();
+        initialBulletLifeTime = bulletLifeTime;
+        initialFireRate = fireRate;
     }
 
     public void StartAtesEt()

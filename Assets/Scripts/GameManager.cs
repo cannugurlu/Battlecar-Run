@@ -10,11 +10,17 @@ public class GameManager : MonoBehaviour
     float XClamp,clampedValue;
     public GameObject[] GunPrefabs;
     public TextMeshProUGUI scoreValue;
-    public GameObject endPanel;
+    public GameObject LoseEndPanel;
+    public GameObject WinEndPanel;
     public static int level = 1;
+    public GameObject[] levelPrefabs;
+
+    public static GameManager instance;
 
     void Awake()
     {
+        instance = this;
+
         Time.timeScale = 0.0f;
         car = GameObject.Find("CAR");
         platform=GameObject.Find("platform");
@@ -43,13 +49,20 @@ public class GameManager : MonoBehaviour
     public void Ended()
     {
         playersScript.gameFinished = true;
-        endPanel.SetActive(true);
-        scoreValue.text = playersScript.money.ToString();
+
+        if (playersScript.isGameWin)
+        {
+            WinEndPanel.SetActive(true);
+            scoreValue.text = playersScript.money.ToString();
+            //leveli artir
+        }
+        else
+        {
+            LoseEndPanel.SetActive(true);
+            playersScript.money = buttonManager.instance.initialMoney;
+        }
+
         FindObjectOfType<buttonManager>().moneyValue.gameObject.SetActive(false);
 
-        if (playersScript.minigameFinished)
-        {
-            level++;
-        }
     }
 }

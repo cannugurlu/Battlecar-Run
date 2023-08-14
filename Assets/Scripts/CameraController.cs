@@ -29,7 +29,7 @@ public class cameraController : MonoBehaviour
         
     }
 
-    private IEnumerator EnableCameraFollow()
+    public IEnumerator EnableCameraFollow()
     {
         yield return new WaitForSeconds(buttonManager.time);
 

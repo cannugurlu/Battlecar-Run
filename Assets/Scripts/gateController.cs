@@ -15,14 +15,18 @@ public class gateController : MonoBehaviour
     private bool isGateDeleted = false;
     //private bool isCarChanged = false;
     public Material blueMaterial;
-    [SerializeField] List<GunScript> gunScriptsList= new List<GunScript>();
+    public List<GunScript> gunScriptsList= new List<GunScript>();
     public Transform carSlots;
     Vector3 initialScale;
     int controllerNumber = 0;
 
+    public static gateController instance;
+
 
     void Start()
     {
+        instance = this;
+
         initialScale = transform.localScale;
         gateGood = gameObject.transform.Find("GateGood").gameObject;
         gateBad = gameObject.transform.Find("GateBad").gameObject;
@@ -53,12 +57,12 @@ public class gateController : MonoBehaviour
 
             if (isPos)
             {
-                Destroy(gameObject.transform.Find("GateGood").gameObject);
+                Destroy(gameObject);
                 isGateDeleted = true;
             }
             else
             {
-                Destroy(gameObject.transform.Find("GateBad").gameObject);
+                Destroy(gameObject);
                 isGateDeleted = true;
             }
         }

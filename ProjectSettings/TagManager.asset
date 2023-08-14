@@ -20,6 +20,7 @@ TagManager:
   - target
   - money
   - box
+  - levelPrefab
   layers:
   - Default
   - TransparentFX
