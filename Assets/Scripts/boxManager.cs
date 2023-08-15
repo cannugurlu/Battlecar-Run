@@ -56,7 +56,7 @@ public class boxManager : MonoBehaviour
         {
             if (!isTargetMoved)
             {
-                if (GameObject.Find("minigameFinisher").transform.position.z < gameObject.transform.position.z)
+                if (GameObject.Find("FinishLine").transform.position.z < gameObject.transform.position.z)
                 {
                     Destroy(box);
                     earnMoneyAnim();
