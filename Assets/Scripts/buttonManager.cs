@@ -101,7 +101,7 @@ public class buttonManager : MonoBehaviour
             }
         }
 
-        gunAngleModifier();
+        gunAngleModifier(0);
     }
 
 
@@ -113,14 +113,30 @@ public class buttonManager : MonoBehaviour
         Cam.transform.DORotate(targetRot, time).SetUpdate(true);
     }
 
-    private void gunAngleModifier()
+    private void gunAngleModifier(int AngleState)
     {
-        foreach (Transform slot in carSlots)
+        //Angle State: 0= y:90derece, 1= z:330derece
+
+        if (AngleState == 0)
         {
-            if(slot.childCount != 0)
+            foreach (Transform slot in carSlots)
             {
-                Transform gun = slot.GetChild(0);
-                gun.DORotate(new Vector3(0, 90, 0), 0.5f);
+                if(slot.childCount != 0)
+                {
+                    Transform gun = slot.GetChild(0);
+                    gun.DORotate(new Vector3(0, 90, 0), 0.5f);
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform slot in carSlots)
+            {
+                if(slot.childCount != 0)
+                {
+                    Transform gun = slot.GetChild(0);
+                    gun.DORotate(new Vector3(90, 0, 330), 0.5f).SetUpdate(true);
+                }
             }
         }
     }
@@ -180,9 +196,11 @@ public class buttonManager : MonoBehaviour
             if (slot.gameObject.TryGetComponent(out Renderer slotRenderer))
             {
                 Material material = slotRenderer.material;
-                material.DOFade(255f, 0.5f).SetUpdate(true);;
+                material.DOFade(1f, 0.5f).SetUpdate(true);;
             }
         }
+
+        gunAngleModifier(1);
 
         //Start Slotları silahları aktif alır.
         foreach (Transform slot in startSlots)
