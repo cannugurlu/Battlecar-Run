@@ -51,6 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d33edff4569a15479f4d74745c8d4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBari: 100
+  income: 10
   velocity: 200
   rotateVelocity: 45
   zAxis: 0
@@ -309,7 +311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.03}
+  m_AnchoredPosition: {x: -0.36, y: -1.03}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1830513039475411310
@@ -437,7 +439,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 8.049961, y: 0, z: 8.04996, w: 2.189757}
+  m_margin: {x: 8.049961, y: 0, z: 7.2779, w: 2.189757}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -849,3 +851,4 @@ MonoBehaviour:
   moneyPrefab: {fileID: 5701312151935306882, guid: 567cd3cd4f87ea84693f66e8e16e2f0a, type: 3}
   swayBackVelocity: 2000
   animTimer: 0.65
+  income: 15

@@ -117,6 +117,12 @@ public class playersScript : MonoBehaviour
             Vector3 geriTirmeYonu = new Vector3(0,0,-1);
             StartCoroutine(KnockbackCoroutine());
         }
+
+        if(other.gameObject.tag == "gameFinisher")
+        {
+            Time.timeScale = 0;
+            FindObjectOfType<GameManager>().Ended();
+        }
     }
 
     private IEnumerator KnockbackCoroutine()

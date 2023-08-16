@@ -21,6 +21,7 @@ TagManager:
   - money
   - box
   - levelPrefab
+  - gameFinisher
   layers:
   - Default
   - TransparentFX

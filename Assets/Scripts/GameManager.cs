@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-
+    
         Time.timeScale = 0.0f;
         car = GameObject.Find("CAR");
         platform=GameObject.Find("platform");
