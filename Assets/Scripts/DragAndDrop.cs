@@ -39,12 +39,19 @@ public class DragAndDrop : MonoBehaviour
 
                 if (otherDragScript != null && otherDragScript.gunLevel == gunLevel)
                 {
-                    Quaternion newRotation = gameManager.GunPrefabs[gunLevel + 1].transform.rotation;
-                    GameObject newObject = Instantiate(gameManager.GunPrefabs[gunLevel + 1], hitInfo.transform.position, newRotation);
-                    newObject.transform.parent = hitInfo.transform.parent;
-                    Destroy(gameObject);
-                    Destroy(hitInfo.transform.gameObject);
-                    droppedOnSlot = true;
+                    if (gunLevel + 1 < gameManager.GunPrefabs.Length)
+                    {
+                        Quaternion newRotation = gameManager.GunPrefabs[gunLevel + 1].transform.rotation;
+                        GameObject newObject = Instantiate(gameManager.GunPrefabs[gunLevel + 1], hitInfo.transform.position, newRotation);
+                        newObject.transform.parent = hitInfo.transform.parent;
+                        Destroy(gameObject);
+                        Destroy(hitInfo.transform.gameObject);
+                        droppedOnSlot = true;
+                    }
+                    else
+                    {
+                        Debug.Log("Maksimum Levele Ulastin");
+                    }
                 }
             }
             else if (hitInfo.transform.CompareTag("Slot"))
