@@ -12,7 +12,8 @@ public class boxManager : MonoBehaviour
     Vector3 initialPos,hedefPos,hedefRot,carPos;
     private GameObject box, hedef,money;
     private TextMeshPro healthbar;
-    float canBari = 100.0f;
+    public float canBari = 100.0f;
+    public float income = 10.0f;
     private bool isTextureChanged=false;
     private bool isTargetMoved = false;
     public float velocity = 200.0f;
@@ -80,7 +81,7 @@ public class boxManager : MonoBehaviour
         moneyObj.transform.DOScale(0.25f, 0.4f);
         moneyObj.transform.DOMoveX(carPos.x, 0.65f).OnComplete(() =>
         {
-            playersScript.money += 50;
+            playersScript.money += income;
             Destroy(moneyObj);
         });
         moneyObj.transform.DOMoveZ(carPos.z+1.5f, 0.65f);

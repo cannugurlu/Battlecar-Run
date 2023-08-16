@@ -8,6 +8,7 @@ public class playersScript : MonoBehaviour
 {
     Rigidbody rb;
     public float velocity;
+    public float income = 15.0f;
     [SerializeField] private float speed = 1f;
     [SerializeField] private float rotationSpeed = 3f;
     [SerializeField] private float ClampX = 2.5f;
@@ -96,7 +97,7 @@ public class playersScript : MonoBehaviour
     {
         if (other.gameObject.tag == "money")
         {
-            money += 50;
+            money += income;
             Destroy(other.gameObject);
         }
 

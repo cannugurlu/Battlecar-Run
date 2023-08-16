@@ -12,6 +12,7 @@ public class targetManager : MonoBehaviour
     float healthofTarget = 100f;
     public float swayBackVelocity = 250.0f;
     public float animTimer = 0.65f;
+    public float income = 15.0f;
     bool isAnimStarted = false;
     void Start()
     {
@@ -90,7 +91,7 @@ public class targetManager : MonoBehaviour
         moneyObj.transform.DOScale(0.25f, 0.4f);
         moneyObj.transform.DOMoveX(carPos.x, 0.65f).OnComplete(() =>
         {
-            playersScript.money += 50;
+            playersScript.money += income;
             Destroy(moneyObj);
         }); ;
         moneyObj.transform.DOMoveZ(carPos.z+1.5f, 0.65f);

@@ -489,6 +489,14 @@ PrefabInstance:
       value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7515118478072009134, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
+      propertyPath: damagetobox
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515118478072009134, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
+      propertyPath: damagetogate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515118478072009134, guid: 2429bb253aafc954bbeae7675a9051e2, type: 3}
       propertyPath: bulletLifeTime
       value: 1
       objectReference: {fileID: 0}
